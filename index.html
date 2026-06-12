@@ -260,29 +260,41 @@
         }
 
         #skills {
-            padding: 130px 56px;
+            padding: 180px 56px;
             background: var(--section-alt);
         }
-        .skills-inner { max-width: 1060px; margin: 0 auto; }
+        .skills-inner { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-            margin-top: 64px;
-            border: 1px solid rgba(196,150,58,.15);
+            gap: 36px;
+            margin-top: 80px;
+            border: 1px solid rgba(196,150,58,.06);
+            padding: 24px;
+            border-radius: 12px;
+            background: transparent;
         }
+        /* Empêcher les enfants de provoquer un débordement horizontal */
+        .skills-grid, .skill-card { min-width: 0; }
+        /* Cacher tout débordement horizontal potentiel */
+        #skills { overflow-x: hidden; }
         .skill-card {
             background: var(--warm-white);
-            padding: 52px 42px;
-            border-right: 1px solid rgba(196,150,58,.12);
-            transition: background .3s;
+            padding: 120px 80px;
+            border-right: 1px solid rgba(196,150,58,.04);
+            transition: background .28s, transform .5s cubic-bezier(.2,.9,.2,1), box-shadow .28s, opacity .6s ease;
+            cursor: default;
+            min-height: 420px;
+            display: flex; flex-direction: column; justify-content: flex-start;
+            border-radius: 10px;
         }
+        .skill-card.expanded { background: #FFF8EE; transform: translateY(-6px); box-shadow: 0 10px 30px rgba(15,12,8,.06); }
         .skill-card:last-child { border-right: none; }
-        .skill-card:hover { background: #FDF9F4; }
-        .skill-card-icon { font-size: 1.6rem; margin-bottom: 22px; display: block; }
+        .skill-card:hover { transform: translateY(-8px); background: #FFF9F2; box-shadow: 0 20px 50px rgba(124,58,237,.06); }
+        .skill-card-icon { font-size: 2.4rem; margin-bottom: 28px; display: block; }
         .skill-card h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.65rem; font-weight: 400;
+            font-size: 2.6rem; font-weight: 400;
             color: var(--charcoal); margin-bottom: 6px;
         }
         .skill-card .sub {
@@ -290,14 +302,31 @@
             letter-spacing: .06em; margin-bottom: 30px;
             font-family: 'DM Sans', sans-serif;
         }
-        .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
+        .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
         .pill {
-            padding: 5px 14px;
-            font-size: .71rem; letter-spacing: .07em;
+            padding: 8px 18px;
+            font-size: .84rem; letter-spacing: .07em;
             text-transform: uppercase;
             font-family: 'DM Sans', sans-serif;
             border: 1px solid;
         }
+        .skill-details { margin-top: 8px; display:flex; flex-direction:column; gap:10px; }
+        .skill-line { display:flex; flex-direction:column; gap:6px; }
+        .skill-name { font-size: .92rem; color: var(--charcoal); font-weight:500; }
+        .progress-bar { width: 100%; height: 10px; background: rgba(26,24,20,.06); border-radius: 999px; overflow:hidden; }
+        .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg,var(--gold),var(--gold-light)); border-radius: 999px; transition: width .9s cubic-bezier(.2,.9,.2,1); }
+        /* Marquee / ticker for pills */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .pill-row.ticker { overflow: hidden; position: relative; width: 100%; }
+        .pill-row.ticker .tape { display: flex; gap: 10px; align-items: center; white-space: nowrap;
+            animation-name: marquee; animation-timing-function: linear; animation-iteration-count: infinite; transform: translateX(0); will-change: transform;
+        }
+        .pill { transition: transform .18s, box-shadow .18s; }
+        .pill:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(15,12,8,.06); }
+        .skill-accent { height: 8px; width: 100%; border-radius: 6px; margin-top: 18px; background: linear-gradient(90deg,var(--gold),var(--gold-light)); opacity: .18; }
 
         #projects {
             padding: 150px 56px;
@@ -650,15 +679,9 @@
 
     /* ════════ SKILLS ════════ */
     const SKILLS = [
-        { icon:'⚛', title:'Frontend', sub:'Frameworks & styles',
-          color:'#1D4ED8', bg:'rgba(29,78,216,.06)',
-          items:['HTML','Tailwind','CSS','Bootstrap'] },
-        { icon:'⚙', title:'Backend', sub:'Langages, API & outils',
-          color:'#166534', bg:'rgba(22,101,52,.06)',
-          items:['PHP','Laravel','Java','JS','SpringBoot','SQL','JSON','Docker', 'DevOps', 'WordPress'] },
-        { icon:'✦', title:'Soft Skills', sub:'Qualités humaines',
-          color:'#7C5422', bg:'rgba(196,150,58,.06)',
-          items:['Travail d\'équipe','Communication','Entraide','Bienveillance'] },
+        { icon:'⚛', title:'Frontend', sub:'Frameworks & styles', color:'#1D4ED8', bg:'rgba(29,78,216,.06)', items:['HTML','CSS','JavaScript','React','Tailwind'] },
+        { icon:'⚙', title:'Backend', sub:'Langages, API & outils', color:'#166534', bg:'rgba(22,101,52,.06)', items:['PHP','Laravel','Java','Node.js','SQL','Docker'] },
+        { icon:'✦', title:'Soft Skills', sub:'Qualités humaines', color:'#7C5422', bg:'rgba(196,150,58,.06)', items:['Travail d\'équipe','Communication','Entraide','Bienveillance'] },
     ];
 
     function Skills() {
@@ -673,19 +696,20 @@
                         <div className="gold-bar center"/>
                     </div>
                     <div className="skills-grid">
-                        {SKILLS.map(g=>(
-                            <div key={g.title} className="skill-card">
+                        {SKILLS.map((g, idx)=>(
+                            <div key={g.title} className="skill-card"
+                                 style={{borderColor: `${g.color}22`, background: `linear-gradient(135deg, ${g.bg}, rgba(255,255,255,0.02))`, transitionDelay: `${idx * 120}ms`}}>
                                 <span className="skill-card-icon">{g.icon}</span>
                                 <h3>{g.title}</h3>
                                 <p className="sub">{g.sub}</p>
-                                <div className="pill-row">
-                                    {g.items.map(s=>(
-                                        <span key={s} className="pill"
-                                              style={{borderColor:`${g.color}28`,color:g.color,background:g.bg}}>
-                                            {s}
-                                        </span>
-                                    ))}
+                                <div className="pill-row ticker" aria-hidden="true">
+                                    <div className="tape" style={{animationDuration: `${Math.max(8, g.items.length * 2)}s`}}>
+                                        {g.items.concat(g.items).map((it,i)=>(
+                                            <span key={it + '-' + i} className="pill" style={{borderColor:`${g.color}28`,color:g.color,background:g.bg}}>{it}</span>
+                                        ))}
+                                    </div>
                                 </div>
+                                <div className="skill-accent" />
                             </div>
                         ))}
                     </div>
@@ -696,7 +720,7 @@
 
     /* ════════ PROJECTS ════════ */
     const PROJECTS = [
-        { img:"images/Screen_Devops.png", title:'Jeux_Videops',    tag:'Devops / Pipeline Ci/CD',     link:'https://noavellat.github.io/Jeux_Videops/' },
+        { img:"images/devops_vignette.png", title:'Jeux_Videops',    tag:'Devops / Pipeline Ci/CD',     link:'https://noavellat.github.io/Jeux_Videops/' },
         { img:"images/docker_vignette.png", title:'POPEYE',    tag:'Docker',                    link:'https://github.com/NoaVellat/POPEYE' },
         { img:'images/movie_vignette.jpg',               title:'My Cinéma', tag:'PHP / JS / SQL / Tailwind', link:'https://github.com/NoaVellat/My_Cinema' },
         { img:"images/klivio_vignette.png", title:'Klivio',    tag:'HTML / CSS / Tailwind',     link:'https://noavellat.github.io/Klivio/' },
