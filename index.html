@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
@@ -154,13 +155,14 @@ h2.section-title .accent{color:var(--green);}
 .skill-tab:hover:not(.active){background:var(--green-dim);color:var(--green);}
 .skill-panel{display:none;margin-top:2.25rem;animation:fadeUp .4s cubic-bezier(.16,1,.3,1) both;}
 .skill-panel.active{display:block;}
-.skill-bars{display:grid;grid-template-columns:1fr 1fr;gap:0 5rem;}
-.sbar{padding:1.1rem 0;border-bottom:1px solid rgba(59,142,255,.07);}
-.sbar-head{display:flex;justify-content:space-between;margin-bottom:.65rem;}
-.sbar-name{font-family:var(--mono);font-size:.83rem;color:var(--text);}
-.sbar-pct{font-family:var(--mono);font-size:.78rem;color:var(--blue);}
-.sbar-track{height:2px;background:rgba(59,142,255,.1);}
-.sbar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--green));transition:width 1.2s cubic-bezier(.16,1,.3,1);}
+.skill-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;}
+.skill-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.85rem;
+  padding:1.75rem 1rem;border:1px solid var(--border2);background:var(--bg2);
+  transition:all .25s cubic-bezier(.16,1,.3,1);}
+.skill-card:hover{border-color:var(--green);background:var(--green-dim);transform:translateY(-4px);}
+.skill-card-icons{display:flex;gap:.6rem;font-size:2.4rem;line-height:1;}
+.skill-card-icons i.fa-solid,.skill-card-icons i.fa-brands{color:var(--green);}
+.skill-card-name{font-family:var(--mono);font-size:.78rem;color:var(--text);letter-spacing:.03em;text-align:center;}
 .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.75rem;}
 .chip{font-family:var(--mono);font-size:.7rem;padding:.35rem .8rem;border:1px solid rgba(0,255,136,.15);color:var(--muted);letter-spacing:.05em;transition:all .2s;cursor:default;}
 .chip:hover{border-color:var(--green);color:var(--green);}
@@ -286,7 +288,7 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spaci
   .nav-links,.nav-cv{display:none;}
   #hero,#about,#skills,#projects,#story,#contact{padding:5rem 1.5rem;}
   .hero-grid,.about-inner,.story-inner{grid-template-columns:1fr;}
-  .skill-bars{grid-template-columns:1fr;}
+  .skill-cards{grid-template-columns:repeat(2,1fr);}
   .skill-tabs{flex-wrap:wrap;}
   .skill-tab{flex:none;width:50%;}
   .stat-row{grid-template-columns:1fr 1fr;}
@@ -405,35 +407,35 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spaci
       <button class="skill-tab" data-tab="soft">Soft Skills</button>
     </div>
     <div class="skill-panel active" id="panel-frontend">
-      <div class="skill-bars">
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">HTML / CSS</span><span class="sbar-pct">90%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:90%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Tailwind CSS</span><span class="sbar-pct">85%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:85%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">JavaScript</span><span class="sbar-pct">72%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:72%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Bootstrap</span><span class="sbar-pct">78%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:78%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">React</span><span class="sbar-pct">65%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:65%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">WordPress</span><span class="sbar-pct">70%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:70%"></div></div></div>
+      <div class="skill-cards">
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-html5-plain colored"></i><i class="devicon-css3-plain colored"></i></div><span class="skill-card-name">HTML / CSS</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-tailwindcss-plain colored"></i></div><span class="skill-card-name">Tailwind CSS</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-javascript-plain colored"></i></div><span class="skill-card-name">JavaScript</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-bootstrap-plain colored"></i></div><span class="skill-card-name">Bootstrap</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-react-original colored"></i></div><span class="skill-card-name">React</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-wordpress-plain colored"></i></div><span class="skill-card-name">WordPress</span></div>
       </div>
       <div class="chips"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript ES6+</span><span class="chip">Tailwind</span><span class="chip">Bootstrap</span><span class="chip">React</span><span class="chip">WordPress</span><span class="chip">Responsive Design</span></div>
     </div>
     <div class="skill-panel" id="panel-backend">
-      <div class="skill-bars">
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">PHP / Laravel</span><span class="sbar-pct">78%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:78%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Java / Spring Boot</span><span class="sbar-pct">68%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:68%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">SQL / MySQL</span><span class="sbar-pct">75%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:75%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">API REST</span><span class="sbar-pct">72%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:72%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Node.js</span><span class="sbar-pct">65%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:65%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">MongoDB</span><span class="sbar-pct">60%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:60%"></div></div></div>
+      <div class="skill-cards">
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-php-plain colored"></i><i class="devicon-laravel-plain colored"></i></div><span class="skill-card-name">PHP / Laravel</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-java-plain colored"></i><i class="devicon-spring-plain colored"></i></div><span class="skill-card-name">Java / Spring Boot</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-mysql-plain colored"></i></div><span class="skill-card-name">SQL / MySQL</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="fa-solid fa-network-wired"></i></div><span class="skill-card-name">API REST</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-nodejs-plain colored"></i></div><span class="skill-card-name">Node.js</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-mongodb-plain colored"></i></div><span class="skill-card-name">MongoDB</span></div>
       </div>
       <div class="chips"><span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">Java</span><span class="chip b">Spring Boot</span><span class="chip b">SQL</span><span class="chip b">MySQL</span><span class="chip">Node.js</span><span class="chip">MongoDB</span><span class="chip">API REST</span></div>
     </div>
     <div class="skill-panel" id="panel-devops">
-      <div class="skill-bars">
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Docker</span><span class="sbar-pct">80%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:80%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">GitHub Actions CI/CD</span><span class="sbar-pct">78%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:78%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Git / GitHub</span><span class="sbar-pct">85%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:85%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">AWS Cloud</span><span class="sbar-pct">58%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:58%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Tests unitaires / fonctionnels</span><span class="sbar-pct">70%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:70%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Linux / Bash</span><span class="sbar-pct">65%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:65%"></div></div></div>
+      <div class="skill-cards">
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-docker-plain colored"></i></div><span class="skill-card-name">Docker</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-githubactions-plain colored"></i></div><span class="skill-card-name">GitHub Actions CI/CD</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-git-plain colored"></i><i class="devicon-github-original colored"></i></div><span class="skill-card-name">Git / GitHub</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-amazonwebservices-original colored"></i></div><span class="skill-card-name">AWS Cloud</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="fa-solid fa-vial"></i></div><span class="skill-card-name">Tests unitaires / fonctionnels</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-linux-plain colored"></i><i class="devicon-bash-plain colored"></i></div><span class="skill-card-name">Linux / Bash</span></div>
       </div>
       <div class="chips"><span class="chip a">Docker</span><span class="chip a">Docker Compose</span><span class="chip a">GitHub Actions</span><span class="chip a">CI/CD Pipeline</span><span class="chip">AWS (Piscine Cloud)</span><span class="chip">npm audit</span><span class="chip">Linter Google Style</span><span class="chip">Linux</span><span class="chip">Git</span></div>
     </div>
@@ -445,22 +447,22 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spaci
           <span style="color:rgba(232,240,255,.35)">Stack full-stack JavaScript apprise à Epitech — API REST + front React.</span>
         </p>
       </div>
-      <div class="skill-bars">
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">MongoDB</span><span class="sbar-pct">62%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:62%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Express.js</span><span class="sbar-pct">65%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:65%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">React</span><span class="sbar-pct">65%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:65%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Node.js</span><span class="sbar-pct">65%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:65%"></div></div></div>
+      <div class="skill-cards">
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-mongodb-plain colored"></i></div><span class="skill-card-name">MongoDB</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-express-original colored"></i></div><span class="skill-card-name">Express.js</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-react-original colored"></i></div><span class="skill-card-name">React</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="devicon-nodejs-plain colored"></i></div><span class="skill-card-name">Node.js</span></div>
       </div>
       <div class="chips"><span class="chip">MongoDB</span><span class="chip">Mongoose</span><span class="chip b">Express.js</span><span class="chip b">REST API</span><span class="chip">React</span><span class="chip">React Hooks</span><span class="chip a">Node.js</span><span class="chip a">npm</span></div>
     </div>
     <div class="skill-panel" id="panel-soft">
-      <div class="skill-bars">
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Travail en équipe</span><span class="sbar-pct">95%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:95%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Rigueur &amp; précision</span><span class="sbar-pct">95%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:95%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Gestion du stress</span><span class="sbar-pct">90%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:90%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Autonomie</span><span class="sbar-pct">88%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:88%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Adaptabilité</span><span class="sbar-pct">90%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:90%"></div></div></div>
-        <div class="sbar"><div class="sbar-head"><span class="sbar-name">Curiosité / apprentissage</span><span class="sbar-pct">95%</span></div><div class="sbar-track"><div class="sbar-fill" style="--w:95%"></div></div></div>
+      <div class="skill-cards">
+        <div class="skill-card"><div class="skill-card-icons"><i class="fa-solid fa-users"></i></div><span class="skill-card-name">Travail en équipe</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="fa-solid fa-bullseye"></i></div><span class="skill-card-name">Rigueur &amp; précision</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="fa-solid fa-heart-pulse"></i></div><span class="skill-card-name">Gestion du stress</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="fa-solid fa-compass"></i></div><span class="skill-card-name">Autonomie</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="fa-solid fa-arrows-rotate"></i></div><span class="skill-card-name">Adaptabilité</span></div>
+        <div class="skill-card"><div class="skill-card-icons"><i class="fa-solid fa-lightbulb"></i></div><span class="skill-card-name">Curiosité / apprentissage</span></div>
       </div>
     </div>
     <div class="stat-row">
@@ -697,18 +699,11 @@ document.querySelector('.photo-img').src = 'data:image/jpeg;base64,/9j/4AAUSkZJR
 (function(){
   const tabs=document.querySelectorAll('.skill-tab');
   const panels=document.querySelectorAll('.skill-panel');
-  const animated=new Set();
-  function animBars(id){
-    if(animated.has(id))return;animated.add(id);
-    document.querySelectorAll('#panel-'+id+' .sbar-fill').forEach((b,i)=>{setTimeout(()=>{b.style.width=b.style.getPropertyValue('--w');},i*70);});
-  }
   tabs.forEach(tab=>tab.addEventListener('click',()=>{
     tabs.forEach(t=>t.classList.remove('active'));panels.forEach(p=>p.classList.remove('active'));
     tab.classList.add('active');const p=document.getElementById('panel-'+tab.dataset.tab);
-    if(p){p.classList.add('active');animBars(tab.dataset.tab);}
+    if(p)p.classList.add('active');
   }));
-  let done=false;
-  new IntersectionObserver(en=>{if(en[0].isIntersecting&&!done){done=true;animBars('frontend');}},{threshold:.15}).observe(document.getElementById('skills'));
 })();
 
 /* ══ COUNTERS ══ */
