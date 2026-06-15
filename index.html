@@ -190,9 +190,9 @@ h2.section-title .accent{color:var(--green);}
 
 /* Zone vidéo */
 .proj-vid-wrap{position:relative;width:100%;height:240px;overflow:hidden;background:#020408;}
-.proj-vid-wrap video{width:100%;height:100%;object-fit:cover;display:block;
+.proj-vid-wrap video,.proj-vid-wrap img{width:100%;height:100%;object-fit:cover;display:block;
   filter:brightness(.8);transition:filter .4s;}
-.proj-card-clean:hover .proj-vid-wrap video{filter:brightness(1);}
+.proj-card-clean:hover .proj-vid-wrap video,.proj-card-clean:hover .proj-vid-wrap img{filter:brightness(1);}
 
 /* Overlay sur la vidéo */
 .proj-vid-overlay{position:absolute;inset:0;
@@ -545,7 +545,48 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spaci
         </div>
       </a>
 
-      <!-- 04 GitHub CTA -->
+      <!-- 04 Générateur de CV -->
+      <a href="https://noavellat.github.io/My_CV_generator/" target="_blank" class="proj-card-clean" data-vid="3">
+        <div class="proj-vid-wrap">
+          <video src="video_Generateur_CV.mov" muted loop playsinline preload="none"></video>
+          <div class="proj-vid-overlay"></div>
+          <div class="proj-scan"></div>
+          <span class="proj-num-badge">04</span>
+          <span class="proj-ext-icon"><i class="fas fa-arrow-up-right-from-square"></i></span>
+          <div class="proj-play-badge"><i class="fas fa-play"></i></div>
+        </div>
+        <div class="proj-text">
+          <span class="proj-tag-line">HTML · CSS · JavaScript</span>
+          <span class="proj-title-big">Générateur de CV</span>
+          <span class="proj-desc-text">Application web permettant de créer son CV en quelques clics — saisie dynamique des informations, aperçu en temps réel et export du résultat dans une interface simple et intuitive.</span>
+          <div class="proj-tech-chips">
+            <span class="proj-chip">HTML5</span><span class="proj-chip">CSS3</span>
+            <span class="proj-chip a">JavaScript</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 05 Core_Lab -->
+      <a href="https://github.com/NoaVellat/Core_Lab" target="_blank" class="proj-card-clean">
+        <div class="proj-vid-wrap">
+          <img src="images/core_lab_vignette.png" alt="Core_Lab" loading="lazy">
+          <div class="proj-vid-overlay"></div>
+          <div class="proj-scan"></div>
+          <span class="proj-num-badge">05</span>
+          <span class="proj-ext-icon"><i class="fas fa-arrow-up-right-from-square"></i></span>
+        </div>
+        <div class="proj-text">
+          <span class="proj-tag-line">MongoDB · Express · React · Node.js</span>
+          <span class="proj-title-big">Core_Lab</span>
+          <span class="proj-desc-text">Plateforme LMS (Learning Management System) de formation en ligne développée avec la stack MERN — pour des formations passionnantes, rapides et ludiques. Gestion des cours, des utilisateurs et du suivi pédagogique.</span>
+          <div class="proj-tech-chips">
+            <span class="proj-chip a">MongoDB</span><span class="proj-chip a">Express</span>
+            <span class="proj-chip b">React</span><span class="proj-chip b">Node.js</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 06 GitHub CTA -->
       <a href="https://github.com/NoaVellat" target="_blank" class="proj-cta-card">
         <i class="fab fa-github"></i>
         <span style="font-family:var(--display);font-size:1.25rem;font-weight:700;color:var(--text)">Voir tous mes projets</span>
