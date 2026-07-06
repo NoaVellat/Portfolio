@@ -1,0 +1,71 @@
+/* ═══════════ RESPONSIVE — nav compacte + adaptations par thème ═══════════ */
+@media(max-width:1024px){
+  /* switcher compact (juste l'orbe) + bouton CV visible sur mobile */
+  .da-toggle .da-name{display:none;}
+  .nav-cv{display:inline-flex !important;padding:.5rem .75rem;font-size:.62rem;}
+  /* popover ancré à l'écran (évite tout débordement horizontal sur mobile) */
+  .da-menu{position:fixed;top:62px;right:1rem;left:auto;min-width:0;width:min(300px,calc(100vw - 2rem));transform-origin:top right;}
+  html[data-da="compile"] .da-menu{left:auto;right:1rem;transform-origin:top right;}
+  .da-hint{font-size:.6rem;max-width:calc(100vw - 2rem);}
+}
+@media(max-width:768px){
+  /* MISE EN PLACE : carte-menu lisible sur mobile */
+  html[data-da="mise-en-place"] body::before{width:100%;border-left:none;border-right:none;}
+  html[data-da="mise-en-place"] .proj-card-clean{grid-template-columns:84px 1fr;gap:1rem;}
+  html[data-da="mise-en-place"] .proj-vid-wrap{width:84px;height:60px;}
+  html[data-da="mise-en-place"] .proj-title-big{white-space:normal;font-size:1.25rem;}
+  html[data-da="mise-en-place"] .proj-title-big::after{display:none;}
+  html[data-da="mise-en-place"] .proj-text::after{font-size:.9rem;}
+
+  /* FLUID : galerie immersive sur mobile */
+  html[data-da="fluid"] .hero-name{font-size:clamp(3rem,17vw,6rem);}
+  html[data-da="fluid"] .section-title{font-size:clamp(2.2rem,11vw,4rem);}
+  html[data-da="fluid"] .proj-card-clean{flex:0 0 86vw;height:58vh;}
+  html[data-da="fluid"] .proj-title-big{font-size:1.6rem;}
+  html[data-da="fluid"] #about::after,
+  html[data-da="fluid"] #skills::after,
+  html[data-da="fluid"] #projects::after,
+  html[data-da="fluid"] #story::after,
+  html[data-da="fluid"] #contact::after{font-size:28vw;top:5vh;}
+  html[data-da="fluid"] .proj-grid-clean{padding-left:6vw;padding-right:6vw;}
+
+  /* ATELIER : magazine sur mobile (1 colonne, cadre resserré) */
+  html[data-da="atelier"] .about-text{-webkit-columns:1;columns:1;column-count:1;}
+  html[data-da="atelier"] .proj-grid-clean{grid-template-columns:1fr;}
+  html[data-da="atelier"] body::before{top:10px;left:10px;right:10px;bottom:10px;}
+  html[data-da="atelier"] .hero-name{font-size:clamp(3rem,15vw,5.5rem);}
+  html[data-da="atelier"] .about-text p{text-align:left;}
+
+  /* COMPILE : IDE désactivé <1025px → pile classique ; on garde juste le portrait "asset" compact */
+  html[data-da="compile"] .photo-wrap{max-width:240px;}
+}
+@media(max-width:520px){
+  html[data-da="fluid"] .proj-card-clean{flex:0 0 90vw;}
+  html[data-da="mise-en-place"] .proj-card-clean{grid-template-columns:1fr;}
+  html[data-da="mise-en-place"] .proj-vid-wrap{width:100%;height:150px;}
+  html[data-da="atelier"] #atl-folio{font-size:.66rem;bottom:16px;}
+}
+
+/* nav mobile compacte (CV visible) + anti-débordement horizontal */
+@media(max-width:768px){
+  nav{padding-left:1.1rem !important;padding-right:1.1rem !important;gap:.5rem;}
+  .nav-logo{font-size:.82rem;}
+  .nav-cv{padding:.45rem .6rem !important;font-size:.58rem !important;}
+  /* empêche les grid tracks de déborder (min-width:auto) → tout reste dans l'écran */
+  .hero-grid{grid-template-columns:minmax(0,1fr) !important;gap:2rem !important;}
+  .hero-left,.hero-right{min-width:0;max-width:100%;}
+  .hero-btns{flex-wrap:wrap;}
+  .hero-role,.hero-desc,.hero-left::before{white-space:normal !important;overflow-wrap:break-word;}
+  .hero-role{font-size:.82rem !important;}
+  section{overflow-x:hidden;}
+  #hero{padding-left:1.4rem !important;padding-right:1.4rem !important;}
+}
+
+/* ════════ ACCESSIBILITÉ — mouvement réduit ════════ */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.15s !important;scroll-behavior:auto !important;}
+  #da-bg.fallback{animation:none;}
+  .da-wrap.hint-on .da-toggle,.da-wrap.hint-on .da-hint,.da-wrap.notice .da-toggle::after{animation:none;}
+  #da-blur{backdrop-filter:none !important;-webkit-backdrop-filter:none !important;}
+}

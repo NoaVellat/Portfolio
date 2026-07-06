@@ -1,0 +1,95 @@
+/* ═══════════ ATELIER : STRUCTURE « LA PLANCHE » (magazine / carnet d'architecte imprimé) ═══════════ */
+/* cadre de page imprimée (immersion "feuille") */
+html[data-da="atelier"] body{position:relative;}
+html[data-da="atelier"] body::before{
+  content:'';position:fixed;top:22px;left:30px;right:30px;bottom:22px;z-index:140;pointer-events:none;
+  border:1px solid rgba(var(--blue-rgb),.4);
+  box-shadow:inset 0 0 0 6px rgba(var(--bg-rgb),.0),0 0 60px rgba(var(--blue-rgb),.06);}
+/* barre de progression de lecture + folio dynamique (JS) — cachés hors atelier */
+#atl-prog,#atl-folio{display:none;}
+html[data-da="atelier"] #atl-prog{display:block;position:fixed;top:0;left:0;right:0;height:2px;z-index:250;
+  background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .1s linear;}
+html[data-da="atelier"] #atl-folio{display:flex;gap:1.1rem;align-items:center;position:fixed;left:0;right:0;bottom:34px;z-index:150;
+  justify-content:center;font-family:var(--display);font-style:italic;font-size:.8rem;letter-spacing:.06em;
+  color:var(--muted);pointer-events:none;}
+html[data-da="atelier"] #atl-folio b{color:var(--green);font-style:normal;font-weight:700;}
+
+/* sections transparentes → la feuille à dessin (contours encre) respire */
+html[data-da="atelier"] #hero,
+html[data-da="atelier"] #about,
+html[data-da="atelier"] #skills,
+html[data-da="atelier"] #projects,
+html[data-da="atelier"] #story,
+html[data-da="atelier"] #contact{
+  background:transparent !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
+  border:none !important;padding:6rem 9vw;}
+html[data-da="atelier"] .about-inner,
+html[data-da="atelier"] .skills-inner,
+html[data-da="atelier"] .projects-inner,
+html[data-da="atelier"] .story-inner,
+html[data-da="atelier"] .contact-inner{max-width:940px;margin:0 auto;}
+
+/* nav = masthead éditorial */
+html[data-da="atelier"] nav{padding:1rem 9vw;background:rgba(var(--bg-rgb),.86) !important;
+  backdrop-filter:blur(6px);border-bottom:1px solid rgba(var(--blue-rgb),.35) !important;}
+html[data-da="atelier"] .nav-logo{font-family:var(--display);font-weight:900;letter-spacing:.01em;}
+html[data-da="atelier"] .nav-links a{font-family:var(--display);font-style:italic;text-transform:none;letter-spacing:0;font-size:.9rem;}
+html[data-da="atelier"] .nav-links a::before{content:'' !important;}
+
+/* en-têtes = titres d'articles */
+html[data-da="atelier"] .section-tag{font-family:var(--display);font-style:italic;font-size:1rem;letter-spacing:.02em;
+  color:var(--green);text-transform:none;}
+html[data-da="atelier"] .section-tag::before{content:'§ ';opacity:.6;}
+html[data-da="atelier"] .section-title{font-size:clamp(2.6rem,5vw,4.2rem);line-height:1;}
+
+/* HERO = COUVERTURE de magazine */
+html[data-da="atelier"] .hero-grid{grid-template-columns:1fr;text-align:center;gap:2.2rem;}
+html[data-da="atelier"] .hero-prompt{display:none;}
+html[data-da="atelier"] .hero-terminal{display:none;}
+html[data-da="atelier"] .hero-left::before{
+  content:'ÉDITION N°01  ·  PORTFOLIO 2025';display:block;font-family:var(--mono);
+  font-size:.7rem;letter-spacing:.4em;color:var(--muted);margin-bottom:1.4rem;}
+html[data-da="atelier"] .hero-name{font-size:clamp(4rem,12vw,9.5rem);line-height:.88;}
+html[data-da="atelier"] .hero-role,
+html[data-da="atelier"] .hero-desc{max-width:520px;margin-left:auto;margin-right:auto;}
+html[data-da="atelier"] .hero-btns,
+html[data-da="atelier"] .hero-status{justify-content:center;flex-wrap:wrap;}
+html[data-da="atelier"] .hero-right{display:flex;justify-content:center;}
+html[data-da="atelier"] .photo-wrap{max-width:210px;}
+
+/* ABOUT = article en 2 colonnes + lettrine */
+html[data-da="atelier"] .about-inner{grid-template-columns:1fr !important;gap:3rem;}
+html[data-da="atelier"] .about-text{column-count:2;column-gap:3rem;}
+html[data-da="atelier"] .about-text>.section-tag,
+html[data-da="atelier"] .about-text>h2,
+html[data-da="atelier"] .about-text>.about-quote,
+html[data-da="atelier"] .about-text>.about-tags{-webkit-column-span:all;column-span:all;}
+html[data-da="atelier"] .about-text p{margin-bottom:1rem;text-align:justify;}
+html[data-da="atelier"] .about-text p:first-of-type::first-letter{
+  font-family:var(--display);font-weight:900;font-size:3.8rem;line-height:.72;float:left;
+  padding:.06em .1em 0 0;color:var(--green);}
+
+/* PROJETS = planches / figures numérotées */
+html[data-da="atelier"] .proj-grid-clean{display:grid;grid-template-columns:1fr 1fr;gap:3.4rem 3rem;
+  background:none;margin-top:3rem;counter-reset:fig;}
+html[data-da="atelier"] .proj-card-clean{display:block;background:none !important;border:none;border-radius:0;
+  overflow:visible;counter-increment:fig;}
+html[data-da="atelier"] .proj-vid-wrap{height:230px;border-radius:0;border:1px solid rgba(var(--blue-rgb),.4);}
+html[data-da="atelier"] .proj-vid-wrap video,
+html[data-da="atelier"] .proj-vid-wrap img{filter:grayscale(.2) contrast(1.03) brightness(1.02);}
+html[data-da="atelier"] .proj-vid-overlay,
+html[data-da="atelier"] .proj-scan,
+html[data-da="atelier"] .proj-num-badge,
+html[data-da="atelier"] .proj-ext-icon{display:none;}
+html[data-da="atelier"] .proj-text{padding:.9rem 0 0;}
+html[data-da="atelier"] .proj-text::before{
+  content:'Fig. ' counter(fig,decimal-leading-zero) '  —  ';
+  font-family:var(--display);font-style:italic;color:var(--green);font-size:.85rem;}
+html[data-da="atelier"] .proj-tag-line{display:inline;color:var(--muted);font-size:.62rem;}
+html[data-da="atelier"] .proj-title-big{display:inline;font-family:var(--display);font-size:1.35rem;font-weight:700;}
+html[data-da="atelier"] .proj-desc-text{font-style:italic;font-size:.85rem;line-height:1.6;color:var(--muted);margin-top:.5rem;}
+html[data-da="atelier"] .proj-tech-chips{margin-top:.7rem;}
+html[data-da="atelier"] .proj-chip{border-color:rgba(var(--blue-rgb),.3) !important;color:var(--muted) !important;border-radius:0;}
+html[data-da="atelier"] .proj-cta-card{grid-column:1 / -1;border:1px solid rgba(var(--blue-rgb),.35);border-radius:0;background:none !important;}
+html[data-da="atelier"] .proj-cta-card span{font-family:var(--display);font-style:italic;color:var(--text) !important;}
+

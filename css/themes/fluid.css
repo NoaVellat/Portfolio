@@ -1,0 +1,90 @@
+/* ═══════════ FLUID : STRUCTURE « LA GALERIE » (scroll-snap immersif — squelette ≠ autres thèmes) ═══════════ */
+html[data-da="fluid"]{scroll-snap-type:y proximity;}
+html[data-da="fluid"] body{counter-reset:panel;}
+/* chaque section = un panneau plein écran, le fond liquide respire dessous */
+html[data-da="fluid"] #hero,
+html[data-da="fluid"] #about,
+html[data-da="fluid"] #skills,
+html[data-da="fluid"] #projects,
+html[data-da="fluid"] #story,
+html[data-da="fluid"] #contact{
+  min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;
+  background:transparent !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
+  border:none !important;position:relative;padding:7rem 6vw;}
+/* scrim doux pour la lisibilité du texte sur le liquide */
+html[data-da="fluid"] #hero::before,
+html[data-da="fluid"] #about::before,
+html[data-da="fluid"] #skills::before,
+html[data-da="fluid"] #projects::before,
+html[data-da="fluid"] #story::before,
+html[data-da="fluid"] #contact::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 78% 68% at 50% 50%,rgba(var(--bg-rgb),.66),transparent 80%);}
+html[data-da="fluid"] section>*{position:relative;z-index:1;}
+/* gros numéro de panneau en filigrane */
+html[data-da="fluid"] #about,
+html[data-da="fluid"] #skills,
+html[data-da="fluid"] #projects,
+html[data-da="fluid"] #story,
+html[data-da="fluid"] #contact{counter-increment:panel;}
+html[data-da="fluid"] #about::after,
+html[data-da="fluid"] #skills::after,
+html[data-da="fluid"] #projects::after,
+html[data-da="fluid"] #story::after,
+html[data-da="fluid"] #contact::after{
+  content:counter(panel,decimal-leading-zero);position:absolute;top:9vh;right:6vw;z-index:0;
+  font-family:var(--display);font-weight:700;font-size:15vw;line-height:.8;color:rgba(var(--green-rgb),.07);pointer-events:none;}
+/* typographie géante */
+html[data-da="fluid"] .section-tag{font-size:.78rem;letter-spacing:.34em;margin-bottom:1.5rem;}
+html[data-da="fluid"] .section-title{font-size:clamp(3rem,8vw,7rem);line-height:.95;}
+html[data-da="fluid"] .about-inner,
+html[data-da="fluid"] .skills-inner,
+html[data-da="fluid"] .story-inner,
+html[data-da="fluid"] .contact-inner{max-width:1080px;margin:0 auto;width:100%;}
+
+/* HERO = splash immersif : nom géant centré, on masque photo + fenêtre config */
+html[data-da="fluid"] .hero-grid{grid-template-columns:1fr;text-align:center;}
+html[data-da="fluid"] .hero-right{display:none;}
+html[data-da="fluid"] .hero-prompt{justify-content:center;display:flex;}
+html[data-da="fluid"] .hero-name{font-size:clamp(4rem,13vw,10.5rem);line-height:.9;}
+html[data-da="fluid"] .hero-btns,
+html[data-da="fluid"] .hero-status{justify-content:center;flex-wrap:wrap;}
+html[data-da="fluid"] .hero-desc{max-width:520px;margin-left:auto;margin-right:auto;}
+html[data-da="fluid"] #hero::after{
+  content:'défiler ↓';position:absolute;bottom:2.6rem;left:50%;transform:translateX(-50%);z-index:1;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.32em;color:var(--muted);
+  animation:float 3s ease-in-out infinite;}
+
+/* PROJETS = galerie horizontale : 1 projet = 1 grand panneau qu'on fait défiler */
+html[data-da="fluid"] #projects{overflow:hidden;}
+html[data-da="fluid"] .projects-inner{max-width:none;width:100%;}
+html[data-da="fluid"] .proj-grid-clean{
+  display:flex;flex-direction:row;flex-wrap:nowrap;gap:2rem;background:none;margin-top:3rem;
+  overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;
+  padding:.5rem 6vw 2rem;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+html[data-da="fluid"] .proj-grid-clean::-webkit-scrollbar{display:none;}
+html[data-da="fluid"] .proj-card-clean{
+  flex:0 0 min(80vw,860px);scroll-snap-align:center;height:66vh;position:relative;
+  border:1px solid rgba(var(--green-rgb),.25);border-radius:26px;overflow:hidden;
+  background:rgba(var(--bg2-rgb),.4);transition:transform .5s var(--ease),border-color .3s;}
+html[data-da="fluid"] .proj-card-clean:hover{transform:translateY(-6px);border-color:var(--green);}
+html[data-da="fluid"] .proj-vid-wrap{position:absolute;inset:0;width:100%;height:100%;border-radius:26px;}
+html[data-da="fluid"] .proj-vid-wrap video,
+html[data-da="fluid"] .proj-vid-wrap img{filter:brightness(.66) saturate(1.15);}
+html[data-da="fluid"] .proj-vid-overlay{background:none;}
+html[data-da="fluid"] .proj-scan{display:none;}
+html[data-da="fluid"] .proj-num-badge{
+  top:1.6rem;left:1.8rem;font-family:var(--display);font-weight:700;font-size:2.2rem;
+  background:none;color:var(--text);letter-spacing:0;padding:0;z-index:4;text-shadow:0 2px 20px rgba(0,0,0,.6);}
+html[data-da="fluid"] .proj-ext-icon{top:1.8rem;right:1.8rem;background:rgba(var(--bg-rgb),.4);backdrop-filter:blur(6px);}
+html[data-da="fluid"] .proj-text{
+  position:absolute;inset:auto 0 0 0;z-index:3;padding:2.5rem;display:block;
+  background:linear-gradient(to top,rgba(var(--bg-rgb),.92) 10%,rgba(var(--bg-rgb),.5) 55%,transparent);}
+html[data-da="fluid"] .proj-tag-line{color:var(--blue);margin-bottom:.5rem;}
+html[data-da="fluid"] .proj-title-big{font-size:clamp(1.8rem,3.4vw,2.8rem);margin-bottom:.6rem;}
+html[data-da="fluid"] .proj-desc-text{font-size:.9rem;margin-bottom:1rem;
+  display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+html[data-da="fluid"] .proj-cta-card{display:none;}
+/* indice de défilement horizontal */
+html[data-da="fluid"] .projects-inner .section-tag::after{content:'  ·  glissez →';color:var(--muted);letter-spacing:.1em;}
+

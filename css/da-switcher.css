@@ -1,0 +1,90 @@
+/* ════════ SÉLECTEUR DE DIRECTION ARTISTIQUE ════════ */
+.da-wrap{position:relative;}
+.da-toggle{position:relative;display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  padding:.5rem .9rem;background:rgba(var(--bg2-rgb),.6);border:1px solid var(--border);color:var(--text);
+  cursor:pointer;text-transform:uppercase;transition:border-color .2s,background .2s;}
+.da-toggle:hover{border-color:var(--green);}
+/* anneau d'attention au chargement — pour repérer le bouton tout de suite */
+.da-toggle::after{content:'';position:absolute;inset:-2px;border-radius:inherit;pointer-events:none;opacity:0;}
+.da-wrap.notice .da-toggle{border-color:rgba(var(--green-rgb),.7);}
+.da-wrap.notice .da-toggle::after{animation:daNotice 1.7s ease-out 3;}
+@keyframes daNotice{0%{box-shadow:0 0 0 0 rgba(var(--green-rgb),.6),0 0 14px 2px rgba(var(--green-rgb),.4);opacity:1}
+  70%,100%{box-shadow:0 0 0 13px rgba(var(--green-rgb),0),0 0 14px 2px rgba(var(--green-rgb),0);opacity:0}}
+.da-toggle:focus-visible{outline:2px solid var(--green);outline-offset:2px;}
+.da-toggle .da-orb{width:15px;height:15px;border-radius:50%;flex:none;
+  background:conic-gradient(from 0deg,rgb(var(--green-rgb)),rgb(var(--blue-rgb)),rgb(var(--amber-rgb)),rgb(var(--green-rgb)));
+  box-shadow:0 0 10px rgba(var(--green-rgb),.6);animation:orbSpin 6s linear infinite;}
+@keyframes orbSpin{to{transform:rotate(360deg)}}
+.da-toggle .da-name{color:var(--muted);}
+.da-toggle .da-name b{color:var(--green);font-weight:700;}
+.da-toggle .da-chev{color:var(--muted);transition:transform .25s var(--ease);}
+.da-wrap.open .da-chev{transform:rotate(180deg);}
+
+.da-menu{position:absolute;top:calc(100% + .7rem);right:0;min-width:290px;z-index:210;
+  background:rgba(var(--bg-rgb),.94);backdrop-filter:blur(22px);border:1px solid var(--border);
+  padding:.5rem;display:flex;flex-direction:column;gap:.25rem;
+  opacity:0;transform:translateY(-8px) scale(.98);pointer-events:none;transform-origin:top right;
+  transition:opacity .25s var(--ease),transform .25s var(--ease);
+  box-shadow:0 24px 60px -20px rgba(0,0,0,.7);}
+.da-wrap.open .da-menu{opacity:1;transform:none;pointer-events:auto;}
+.da-menu-h{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;color:var(--muted2);text-transform:uppercase;padding:.55rem .7rem .3rem;}
+.da-opt{display:flex;align-items:center;gap:.8rem;padding:.7rem;background:transparent;border:1px solid transparent;
+  cursor:pointer;text-align:left;width:100%;transition:background .2s,border-color .2s;}
+.da-opt:hover{background:rgba(var(--green-rgb),.06);border-color:var(--border);}
+.da-opt:focus-visible{outline:2px solid var(--green);outline-offset:-2px;}
+.da-opt .sw{width:34px;height:34px;flex:none;border-radius:3px;border:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden;}
+.da-opt .sw::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.14) 50%,transparent 60%);}
+.da-opt-txt{display:flex;flex-direction:column;gap:.15rem;flex:1;min-width:0;}
+.da-opt-name{font-family:var(--display);font-size:.95rem;font-weight:700;color:var(--text);line-height:1;}
+.da-opt-desc{font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;color:var(--muted);}
+.da-opt .da-check{color:var(--green);opacity:0;font-size:.8rem;flex:none;}
+.da-opt[aria-checked="true"]{border-color:var(--border);background:rgba(var(--green-rgb),.05);}
+.da-opt[aria-checked="true"] .da-check{opacity:1;}
+/* swatches par DA (indépendants de la DA active) */
+.sw-terminal{background:linear-gradient(135deg,#050810 0%,#0d1526 45%,#00FF88 100%);}
+.sw-compile{background:linear-gradient(135deg,#081428 0%,#78AAE1 45%,#4DE1C1 100%);}
+.sw-mise{background:linear-gradient(135deg,#16110E 0%,#B87333 55%,#FF5A1F 100%);}
+.sw-fluid{background:linear-gradient(135deg,#120a24 0%,#1FD1C4 45%,#E8409B 100%);}
+.sw-atelier{background:linear-gradient(135deg,#F4EFE6 0%,#C65D3B 60%,#4A5A6E 100%);}
+
+/* ════════ ACCROCHE « on peut changer de fond » ════════ */
+.da-hint{position:absolute;top:calc(100% + .7rem);right:0;white-space:nowrap;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;color:rgb(var(--bg-rgb));font-weight:500;
+  background:rgb(var(--green-rgb));padding:.5rem .8rem;border-radius:5px;z-index:215;
+  opacity:0;transform:translateY(-6px);pointer-events:none;
+  transition:opacity .4s var(--ease),transform .4s var(--ease);
+  box-shadow:0 12px 34px -8px rgba(var(--green-rgb),.65);}
+.da-hint::before{content:'';position:absolute;bottom:100%;right:26px;border:6px solid transparent;border-bottom-color:rgb(var(--green-rgb));}
+.da-wrap.hint-on .da-hint{opacity:1;transform:none;animation:hintBob 1.7s var(--ease) infinite;}
+@keyframes hintBob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+.da-wrap.hint-on .da-toggle{animation:hintPulse 1.7s ease-in-out infinite;}
+@keyframes hintPulse{0%,100%{box-shadow:0 0 0 0 rgba(var(--green-rgb),.5)}70%{box-shadow:0 0 0 14px rgba(var(--green-rgb),0)}}
+
+/* ════════ CONTRASTE RADICAL PAR DA — formes, titre, préfixes ════════ */
+html[data-da="terminal"]{--radius:0px;}
+html[data-da="compile"]{--radius:3px;}
+html[data-da="mise-en-place"]{--radius:16px;}
+html[data-da="fluid"]{--radius:26px;}
+html[data-da="atelier"]{--radius:10px;}
+.btn-primary,.btn-outline,.nav-cv,.da-toggle,.da-menu,.da-opt,.atag,.chip,.tl-ttag,.proj-card-clean,
+.photo-badge,.about-quote,.story-quote,.cc,.stat-box,.skill-tab,.proj-cta-card{border-radius:var(--radius);}
+.hero-terminal{border-radius:var(--radius);overflow:hidden;}
+/* Titre héro : traitement propre à chaque ambiance */
+/* Fluid : dégradé iridescent appliqué par LETTRE (compatible lettres magnétiques inline-block) */
+html[data-da="fluid"] h1.hero-name .green{animation:none;color:transparent;}
+html[data-da="fluid"] h1.hero-name .green .ml{
+  background:linear-gradient(120deg,#E8409B 0%,#B79CFF 50%,#1FD1C4 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+html[data-da="compile"] h1.hero-name::after{content:'_';color:var(--green);margin-left:.06em;
+  animation:blink 1.05s steps(1) infinite;}
+html[data-da="mise-en-place"] h1.hero-name .green{font-style:italic;font-weight:900;}
+/* Préfixe des liens de nav propre à chaque ambiance */
+html[data-da="compile"] .nav-links a::before{content:'~/';}
+html[data-da="mise-en-place"] .nav-links a::before{content:'▸ ';}
+html[data-da="fluid"] .nav-links a::before{content:'✦ ';}
+html[data-da="atelier"] .nav-links a::before{content:'✎ ';}
+/* Atelier (fond clair) : le curseur perso doit s'assombrir, pas s'éclaircir */
+html[data-da="atelier"] #da-cursor{mix-blend-mode:multiply;box-shadow:0 0 18px rgba(var(--green-rgb),.35);}
+html[data-da="atelier"] #da-cursor-dot{mix-blend-mode:multiply;box-shadow:0 0 8px rgba(var(--green-rgb),.6);}
+html[data-da="atelier"] h1.hero-name .green{font-style:italic;}
+

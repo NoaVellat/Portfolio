@@ -1,0 +1,43 @@
+/* ═══════════ COMPILE : STRUCTURE « L'IDE » (éditeur de code — squelette ≠ autres thèmes) ═══════════ */
+/* sections titrées comme des fichiers ouverts (valable toutes tailles) */
+html[data-da="compile"] .section-tag{font-size:0;letter-spacing:0;}
+html[data-da="compile"] .section-tag::before{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;color:var(--muted);text-transform:none;}
+html[data-da="compile"] #about .section-tag::before{content:'src / about.md';}
+html[data-da="compile"] #skills .section-tag::before{content:'src / skills.json';}
+html[data-da="compile"] #projects .section-tag::before{content:'src / projects /';}
+html[data-da="compile"] #story .section-tag::before{content:'logs / history.log';}
+html[data-da="compile"] #contact .section-tag::before{content:'exec / contact.sh';}
+html[data-da="compile"] .section-tag::after{content:'  ●';color:var(--green);font-size:.6rem;} /* pastille "modifié" */
+
+@media(min-width:1025px){
+  /* ── SIDEBAR : explorateur de fichiers ── */
+  html[data-da="compile"] nav{
+    flex-direction:column;align-items:stretch;justify-content:flex-start;
+    top:0;left:0;bottom:0;width:246px;height:100vh;padding:1.15rem .85rem;gap:.35rem;
+    background:rgba(var(--bg2-rgb),.94) !important;backdrop-filter:blur(12px);
+    border-right:1px solid var(--border);border-bottom:none !important;}
+  html[data-da="compile"] .nav-logo{order:0;padding:.3rem .5rem 1rem;font-size:.88rem;
+    border-bottom:1px solid var(--border);margin-bottom:.7rem;}
+  html[data-da="compile"] .nav-right{order:1;flex-direction:column;align-items:stretch;gap:.55rem;margin-bottom:1.1rem;}
+  html[data-da="compile"] .nav-cv{text-align:center;justify-content:center;}
+  html[data-da="compile"] .nav-links{order:2;flex-direction:column;gap:.12rem;align-items:stretch;}
+  html[data-da="compile"] .nav-links li{width:100%;}
+  html[data-da="compile"] .nav-links a{display:flex;align-items:center;gap:0;
+    padding:.5rem .55rem;font-size:.8rem;letter-spacing:.02em;border-radius:5px;}
+  html[data-da="compile"] .nav-links a:hover,
+  html[data-da="compile"] .nav-links a.active{background:rgba(var(--green-rgb),.1);color:var(--green);}
+  html[data-da="compile"] .nav-links a::before{content:'▸';opacity:.55;margin-right:.35rem;}
+  html[data-da="compile"] .nav-links a::after{color:var(--muted);}
+  html[data-da="compile"] .nav-links a[data-file="README"]::after{content:'.md';}
+  html[data-da="compile"] .nav-links a[data-file^="proj-"]::after{content:'/';}
+  html[data-da="compile"] .nav-links a[data-file="parcours"]::after{content:'.md';}
+  html[data-da="compile"] .nav-links a[data-file="contrib"]::after{content:'.md';}
+  /* ── zone éditeur : contenu décalé à droite de la sidebar (la vraie minimap/status bar vit dans .cm) ── */
+  html[data-da="compile"] body{padding-left:246px;}
+  /* sidebar à gauche → le popover des thèmes s'ouvre vers la DROITE (sinon coupé hors écran) */
+  html[data-da="compile"] .da-menu{left:0;right:auto;transform-origin:top left;}
+  html[data-da="compile"] .da-hint{left:0;right:auto;}
+  html[data-da="compile"] .da-hint::before{left:26px;right:auto;}
+}
+

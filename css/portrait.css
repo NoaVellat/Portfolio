@@ -1,0 +1,23 @@
+/* ═══════════ FORME DU PORTRAIT DIFFÉRENTE PAR THÈME ═══════════ */
+/* Compile — "asset image" dans l'éditeur : rectangle + cadre pointillé + métadonnées */
+html[data-da="compile"] .photo-img{clip-path:none;border-radius:2px;border:1px solid rgba(var(--green-rgb),.55);filter:grayscale(.1) contrast(1.05);}
+html[data-da="compile"] .photo-ring{display:none;}
+html[data-da="compile"] .photo-wrap{max-width:300px;animation:none;}
+html[data-da="compile"] .photo-wrap::before{content:'';position:absolute;inset:-11px;border:1px dashed rgba(var(--green-rgb),.4);pointer-events:none;}
+html[data-da="compile"] .photo-wrap::after{content:'portrait.png · 1080×1080 · sRGB';position:absolute;left:0;bottom:-1.7rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;color:var(--muted);white-space:nowrap;}
+html[data-da="compile"] .photo-badge{top:.7rem;right:.7rem;bottom:auto;background:rgba(var(--bg-rgb),.72);}
+
+/* Mise en Place — médaillon rond de chef */
+html[data-da="mise-en-place"] .photo-img{clip-path:none;border-radius:50%;border:3px solid var(--green);}
+html[data-da="mise-en-place"] .photo-ring{clip-path:none;border-radius:50%;inset:-11px;border:1px solid rgba(var(--green-rgb),.4);animation:none;}
+html[data-da="mise-en-place"] .photo-badge{display:none;}
+html[data-da="mise-en-place"] .photo-wrap::after{content:'— Le Chef —';position:absolute;left:0;right:0;bottom:-2.3rem;text-align:center;font-family:var(--display);font-style:italic;color:var(--green2);font-size:.92rem;letter-spacing:.05em;}
+
+/* Atelier — planche de magazine : rectangle N&B + légende */
+html[data-da="atelier"] .photo-img{clip-path:none;border-radius:0;border:1px solid var(--text);filter:grayscale(.55) contrast(1.06);}
+html[data-da="atelier"] .photo-ring{display:none;}
+html[data-da="atelier"] .photo-badge{display:none;}
+html[data-da="atelier"] .photo-wrap{max-width:200px;animation:none;}
+html[data-da="atelier"] .photo-wrap::before{content:'';position:absolute;inset:-9px;border:1px solid rgba(var(--blue-rgb),.45);pointer-events:none;}
+html[data-da="atelier"] .photo-wrap::after{content:'Fig. 00 — L’auteur';position:absolute;left:0;right:0;bottom:-1.9rem;text-align:center;font-family:var(--display);font-style:italic;font-size:.78rem;color:var(--muted);}
+
