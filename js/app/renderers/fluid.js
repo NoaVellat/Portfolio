@@ -10,9 +10,9 @@
     const open=`<section class="gl-screen gl-open" id="gl-open">
       <span class="gl-counter-in">${pad(1)} / ${pad(total)}</span>
       <h1 class="gl-open-name">${esc(id.prenom)}<br/><em>${esc(id.nom)}</em></h1>
-      <p class="gl-open-line">Sélection de travaux — 2024–2026</p>
+      <p class="gl-open-line">${L('Sélection de travaux','Selected works')} — 2024–2026</p>
       ${inviteHTML(V,'gl-open-invite')}
-      <span class="gl-scroll-cue" aria-hidden="true">défiler ↓</span>
+      <span class="gl-scroll-cue" aria-hidden="true">${L('défiler','scroll')} ↓</span>
     </section>`;
 
     const works=C.projets.map((p,i)=>{
@@ -24,11 +24,11 @@
         <div class="gl-work-inner">
           ${media}
           <div class="gl-cartel">
-            <span class="gl-cartel-idx" aria-hidden="true">Œuvre n°${pad(i+1)}</span>
+            <span class="gl-cartel-idx" aria-hidden="true">${L('Œuvre n°','Work No. ')}${pad(i+1)}</span>
             <h2 class="gl-work-name">${esc(p.nom)}</h2>
-            <div class="gl-cartel-med"><span class="gl-cartel-k">Médium</span> ${esc(p.stackLine)}</div>
+            <div class="gl-cartel-med"><span class="gl-cartel-k">${L('Médium','Medium')}</span> ${esc(p.stackLine)}</div>
             <p class="gl-cartel-phrase">${esc(snip(p.description))}</p>
-            <button type="button" class="gl-more" data-idx="${i}" aria-haspopup="dialog">Notice de l’œuvre →</button>
+            <button type="button" class="gl-more" data-idx="${i}" aria-haspopup="dialog">${L('Notice de l’œuvre','About this work')} →</button>
           </div>
         </div>
       </section>`;
@@ -38,7 +38,7 @@
       <span class="gl-counter-in">${pad(total-1)} / ${pad(total)}</span>
       <div class="gl-artiste-inner">
         <span class="gl-kicker">${esc(V.about)}</span>
-        <p class="gl-artiste-bio">Formé en cuisine gastronomique lyonnaise, <b>${esc(id.nomComplet)}</b> transpose la rigueur du dressage et la gestion de la brigade dans le développement web.</p>
+        <p class="gl-artiste-bio">${L('Formé en cuisine gastronomique lyonnaise,','Trained in Lyon fine-dining kitchens,')} <b>${esc(id.nomComplet)}</b> ${L('transpose la rigueur du dressage et la gestion de la brigade dans le développement web.','brings plating rigor and brigade management to web development.')}</p>
         <p class="gl-artiste-sub">${esc(id.ecole)}, 2025–2027 · ${esc(id.localisation)}</p>
       </div>
     </section>`;
@@ -53,19 +53,19 @@
           <a href="${CT.github.url}" target="_blank" rel="noopener">GitHub</a>
         </div>
         <p class="gl-livredor-dispo">${esc(id.dispo.long)}.</p>
-        <a class="gl-livredor-cv" href="${CT.cv}" download>Télécharger le CV (PDF) ↓</a>
+        <a class="gl-livredor-cv" href="${CT.cv}" download>${L('Télécharger le CV (PDF)','Download the CV (PDF)')} ↓</a>
       </div>
     </section>`;
 
     /* Notice — overlay sobre (détail complet au clic) */
     const overlay=`<div class="gl-overlay" id="gl-overlay" role="dialog" aria-modal="true" aria-labelledby="gl-ov-title" hidden>
       <div class="gl-overlay-panel">
-        <button type="button" class="gl-overlay-close" aria-label="Fermer la notice">✕</button>
+        <button type="button" class="gl-overlay-close" aria-label="${L('Fermer la notice','Close')}">✕</button>
         <span class="gl-ov-idx" id="gl-ov-idx"></span>
         <h3 class="gl-ov-title" id="gl-ov-title"></h3>
         <p class="gl-ov-med" id="gl-ov-med"></p>
         <p class="gl-ov-desc" id="gl-ov-desc"></p>
-        <a class="gl-ov-link" id="gl-ov-link" target="_blank" rel="noopener">Consulter la réalisation →</a>
+        <a class="gl-ov-link" id="gl-ov-link" target="_blank" rel="noopener">${L('Consulter la réalisation','View the project')} →</a>
       </div>
     </div>`;
 
@@ -74,8 +74,8 @@
 
   function initFluidGalerie(){
     setNavLinks([
-      {href:'#gl-w0',s:'gl-w0',label:'œuvres'},
-      {href:'#gl-cartel',s:'gl-cartel',label:'l’artiste'},
+      {href:'#gl-w0',s:'gl-w0',label:L('œuvres','works')},
+      {href:'#gl-cartel',s:'gl-cartel',label:L('l’artiste','the artist')},
       {href:'#gl-livredor',s:'gl-livredor',label:'contact'}
     ]);
     initScrollSpy();
@@ -84,8 +84,8 @@
     const screens=[].slice.call(main.querySelectorAll('.gl-screen'));
     /* compteur + rail de points (progression liée au snap) */
     if(!glCounter){ glCounter=document.createElement('div');glCounter.id='gl-counter';glCounter.setAttribute('aria-hidden','true');document.body.appendChild(glCounter); }
-    if(!glRail){ glRail=document.createElement('div');glRail.id='gl-rail';glRail.setAttribute('role','navigation');glRail.setAttribute('aria-label','Écrans de l’exposition');document.body.appendChild(glRail); }
-    glRail.innerHTML=screens.map((s,i)=>'<button type="button" data-i="'+i+'" aria-label="Aller à l’écran '+(i+1)+' sur '+screens.length+'"></button>').join('');
+    if(!glRail){ glRail=document.createElement('div');glRail.id='gl-rail';glRail.setAttribute('role','navigation');glRail.setAttribute('aria-label',L('Écrans de l’exposition','Exhibition screens'));document.body.appendChild(glRail); }
+    glRail.innerHTML=screens.map((s,i)=>'<button type="button" data-i="'+i+'" aria-label="'+L('Aller à l’écran','Go to screen')+' '+(i+1)+(window.__LANG==='en'?' of ':' sur ')+screens.length+'"></button>').join('');
     const dots=[].slice.call(glRail.querySelectorAll('button'));
     const pad=n=>('0'+n).slice(-2);
     function setActive(i){ glCounter.textContent=pad(i+1)+' / '+pad(screens.length); dots.forEach((d,k)=>d.classList.toggle('on',k===i)); }
@@ -101,7 +101,7 @@
     let lastFocus=null;
     function openOv(idx){
       const p=CONTENT.projets[idx]; if(!p||!ov)return;
-      ov.querySelector('#gl-ov-idx').textContent='Œuvre n°'+pad(idx+1)+' · Médium';
+      ov.querySelector('#gl-ov-idx').textContent=L('Œuvre n°','Work No. ')+pad(idx+1)+L(' · Médium',' · Medium');
       ov.querySelector('#gl-ov-title').textContent=p.nom;
       ov.querySelector('#gl-ov-med').textContent=p.stackLine;
       ov.querySelector('#gl-ov-desc').textContent=p.description;

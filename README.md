@@ -22,8 +22,9 @@ Portfolio/
 ├── js/
 │   ├── background/engine.js    # moteur WebGL des fonds + bascule de DA (IIFE autonome)
 │   └── app/
+│       ├── i18n.js             # langue FR/EN : helper L(fr,en), bouton #langToggle, patch du nav
 │       ├── core.js             # constantes partagées (main, root, reduce, __PHOTO)
-│       ├── content.js          # CONTENT + VOICE : la source de vérité du contenu
+│       ├── content.js          # CONTENT + VOICE : la source de vérité du contenu (bilingue via L)
 │       ├── renderers/          # un renderer par DA (terminal, atelier, fluid, compile, mise-en-place)
 │       ├── enhancers.js        # table des renderers + effets re-runnables (typed, reveal, vidéos…)
 │       └── main.js             # orchestrateur de rendu + boot
@@ -33,6 +34,15 @@ Portfolio/
 │   └── docs/                   # CV pdf
 └── _sources/                   # originaux lourds (.mov 3420px, photo brute) — ignoré par git
 ```
+
+## Bilingue FR/EN
+
+Le bouton **EN/FR** du nav bascule la langue (persistée dans `localStorage` sous
+`noa-lang`, appliquée avant le paint par le script inline du `<head>`, puis reload).
+Chaque libellé passe par le helper `L('texte fr','english text')` défini dans
+`js/app/i18n.js` — pour ajouter du texte visible, toujours l'écrire via `L(...)`.
+Les quelques textes générés en CSS (`content:`) ont leur variante `html[lang="en"]`
+en fin de fichier CSS concerné.
 
 ## ⚠️ L'ordre de chargement compte
 

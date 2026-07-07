@@ -7,7 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600&family=Syne:wght@400;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
-<script>/* anti-FOUC : applique la DA avant le paint */(function(){var ok={terminal:1,'mise-en-place':1,compile:1,fluid:1,atelier:1};var v='terminal';try{var d=localStorage.getItem('noa-da');if(ok[d])v=d;}catch(e){}document.documentElement.setAttribute('data-da',v);})();</script>
+<script>/* anti-FOUC : applique la DA avant le paint */(function(){var ok={terminal:1,'mise-en-place':1,compile:1,fluid:1,atelier:1};var v='terminal';try{var d=localStorage.getItem('noa-da');if(ok[d])v=d;}catch(e){}document.documentElement.setAttribute('data-da',v);})();
+/* anti-FOUC langue : applique fr/en avant le paint (les textes CSS en dépendent) */(function(){var ok={fr:1,en:1};var v='fr';try{var s=localStorage.getItem('noa-lang');if(ok[s])v=s;}catch(e){}window.__LANG=v;document.documentElement.lang=v;})();</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
 <link rel="stylesheet" href="css/base.css"/>
@@ -81,6 +82,7 @@
       </div>
     </div>
     <a href="assets/docs/CV_Noa_Vellat.pdf" download class="nav-cv">↓ CV.pdf</a>
+    <button type="button" id="langToggle" class="nav-cv nav-lang" aria-label="Switch to English">EN</button>
   </div>
 </nav>
 
@@ -106,6 +108,7 @@
 <script src="js/background/engine.js"></script>
 
 <!-- Application « 1 contenu, 5 récits » (scripts classiques : l'ordre compte) -->
+<script src="js/app/i18n.js"></script>
 <script src="js/app/core.js"></script>
 <script src="js/app/content.js"></script>
 <script src="js/app/renderers/terminal.js"></script>

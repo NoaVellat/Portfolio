@@ -88,3 +88,7 @@ html[data-da="fluid"] .proj-cta-card{display:none;}
 /* indice de défilement horizontal */
 html[data-da="fluid"] .projects-inner .section-tag::after{content:'  ·  glissez →';color:var(--muted);letter-spacing:.1em;}
 
+
+/* i18n — version anglaise des textes générés en CSS */
+html[lang="en"][data-da="fluid"] .projects-inner .section-tag::after{content:'  ·  swipe →';}
+html[lang="en"][data-da="fluid"] #hero::after{content:'scroll ↓';}

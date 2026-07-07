@@ -88,3 +88,6 @@ html[data-da="atelier"] #da-cursor{mix-blend-mode:multiply;box-shadow:0 0 18px r
 html[data-da="atelier"] #da-cursor-dot{mix-blend-mode:multiply;box-shadow:0 0 8px rgba(var(--green-rgb),.6);}
 html[data-da="atelier"] h1.hero-name .green{font-style:italic;}
 
+
+/* ════════ BOUTON DE LANGUE FR/EN (même habit que .nav-cv) ════════ */
+button.nav-lang{background:transparent;cursor:pointer;letter-spacing:.08em;}

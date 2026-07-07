@@ -29,19 +29,19 @@
     addFile({id:'README',name:'README.md',path:'',lang:'markdown',icon:'md'},
       '<div class="cm-md">'
       +'<h1># '+esc(id.nomComplet)+'</h1>'
-      +'<div class="cm-badges">'+badge('alternance','sept-2026')+badge('stack','front + devops')+badge('status','cooking')+badge('school',id.ecole)+'</div>'
+      +'<div class="cm-badges">'+badge(L('alternance','apprenticeship'),'sept-2026')+badge('stack','front + devops')+badge('status','cooking')+badge('school',id.ecole)+'</div>'
       +'<blockquote>'+esc(id.pitch)+'</blockquote>'
-      +'<h2>## En bref</h2>'
-      +'<ul><li>Reconversion : cuisine gastronomique lyonnaise → développement web.</li>'
-      +'<li>'+esc(id.ecole)+' · Web Académie · 2025–2027 (alternance).</li>'
+      +'<h2>## '+L('En bref','In short')+'</h2>'
+      +'<ul><li>'+L('Reconversion : cuisine gastronomique lyonnaise → développement web.','Career change: Lyon fine-dining kitchens → web development.')+'</li>'
+      +'<li>'+esc(id.ecole)+' · Web Académie · 2025–2027 '+L('(alternance).','(apprenticeship).')+'</li>'
       +'<li>'+esc(id.dispo.long)+'.</li>'
       +'<li class="da-invite"><span class="inv-star" aria-hidden="true">✦</span> '+esc(V.invite)+' <span class="inv-path">('+esc(V.invitePath)+')</span></li></ul>'
-      +'<h2>## Explorer ce dépôt</h2>'
+      +'<h2>## '+L('Explorer ce dépôt','Explore this repo')+'</h2>'
       +'<ul class="cm-md-files">'
-      +'<li><button class="cm-openlink" data-open="proj-'+C.projets[0].id+'">src/projects/</button> — '+C.projets.length+' réalisations, un fichier chacune.</li>'
-      +'<li><button class="cm-openlink" data-open="parcours">docs/parcours.md</button> — l’histoire complète.</li>'
-      +'<li><button class="cm-openlink" data-open="pkg">package.json</button> — la stack en dépendances.</li>'
-      +'<li><button class="cm-openlink" data-open="contrib">CONTRIBUTING.md</button> — comment me contacter.</li>'
+      +'<li><button class="cm-openlink" data-open="proj-'+C.projets[0].id+'">src/projects/</button> — '+C.projets.length+L(' réalisations, un fichier chacune.',' projects, one file each.')+'</li>'
+      +'<li><button class="cm-openlink" data-open="parcours">docs/parcours.md</button> — '+L('l’histoire complète.','the full story.')+'</li>'
+      +'<li><button class="cm-openlink" data-open="pkg">package.json</button> — '+L('la stack en dépendances.','the stack as dependencies.')+'</li>'
+      +'<li><button class="cm-openlink" data-open="contrib">CONTRIBUTING.md</button> — '+L('comment me contacter.','how to reach me.')+'</li>'
       +'</ul></div>');
 
     /* package.json */
@@ -52,15 +52,15 @@
     const pkgLines=[
       '<span class="tk-p">{</span>',
       '  '+kj('name')+': '+s_('noa-vellat')+',',
-      '  '+kj('rôle')+': '+s_(id.titre)+',',
-      '  '+kj('disponibilité')+': '+s_('alternance — septembre 2026')+',',
-      '  '+kj('dependencies')+': <span class="tk-p">{</span>  '+c('// ce que je manipule au quotidien'),
+      '  '+kj(L('rôle','role'))+': '+s_(id.titre)+',',
+      '  '+kj(L('disponibilité','availability'))+': '+s_(L('alternance — septembre 2026','apprenticeship — September 2026'))+',',
+      '  '+kj('dependencies')+': <span class="tk-p">{</span>  '+c(L('// ce que je manipule au quotidien','// what I work with daily')),
       depBlock(depFront),
       '  <span class="tk-p">}</span>,',
-      '  '+kj('devDependencies')+': <span class="tk-p">{</span>  '+c('// outillage & infra'),
+      '  '+kj('devDependencies')+': <span class="tk-p">{</span>  '+c(L('// outillage & infra','// tooling & infra')),
       depBlock(depDev),
       '  <span class="tk-p">}</span>,',
-      '  '+kj('peerDependencies')+': <span class="tk-p">{</span>  '+c('// acquis en cuisine — non négociables'),
+      '  '+kj('peerDependencies')+': <span class="tk-p">{</span>  '+c(L('// acquis en cuisine — non négociables','// learned in the kitchen — non-negotiable')),
       depBlock(depPeer),
       '  <span class="tk-p">}</span>',
       '<span class="tk-p">}</span>'
@@ -72,12 +72,12 @@
     /* CONTRIBUTING.md */
     addFile({id:'contrib',name:'CONTRIBUTING.md',path:'',lang:'markdown',icon:'md'},
       '<div class="cm-md">'
-      +'<h1># Contribuer / me contacter</h1>'
-      +'<blockquote>'+esc(id.dispo.long)+'. Une opportunité, une question, un projet ? Ouvrez une issue (ou écrivez-moi).</blockquote>'
-      +'<h2>## Canaux</h2>'
+      +'<h1># '+L('Contribuer / me contacter','Contributing / contact me')+'</h1>'
+      +'<blockquote>'+esc(id.dispo.long)+L('. Une opportunité, une question, un projet ? Ouvrez une issue (ou écrivez-moi).','. An opportunity, a question, a project? Open an issue (or just write to me).')+'</blockquote>'
+      +'<h2>## '+L('Canaux','Channels')+'</h2>'
       +'<ul class="cm-contact">'
       +'<li><span class="tk-key">email</span> → <a href="mailto:'+CT.email+'">'+esc(CT.email)+'</a></li>'
-      +'<li><span class="tk-key">tél</span> → <a href="tel:'+CT.telHref+'">'+esc(CT.tel)+'</a></li>'
+      +'<li><span class="tk-key">'+L('tél','tel')+'</span> → <a href="tel:'+CT.telHref+'">'+esc(CT.tel)+'</a></li>'
       +'<li><span class="tk-key">linkedin</span> → <a href="'+CT.linkedin.url+'" target="_blank" rel="noopener">'+esc(CT.linkedin.handle)+'</a></li>'
       +'<li><span class="tk-key">github</span> → <a href="'+CT.github.url+'" target="_blank" rel="noopener">'+esc(CT.github.handle)+'</a></li>'
       +'<li><span class="tk-key">cv</span> → <a href="'+CT.cv+'" download>CV_Noa_Vellat.pdf</a></li>'
@@ -87,11 +87,11 @@
     const chrono=P.timelineLong.map(t=>'<li><b>'+esc(t.year)+'</b> — '+esc(t.role)+' · '+esc(t.place.trim())+'</li>').join('');
     addFile({id:'parcours',name:'parcours.md',path:'docs/',lang:'markdown',icon:'md'},
       '<div class="cm-md">'
-      +'<h1># De la brigade au commit</h1>'
+      +'<h1># '+L('De la brigade au commit','From the brigade to the commit')+'</h1>'
       +P.story.paras.map(p=>'<p>'+esc(p)+'</p>').join('')
       +P.about.paras.map(p=>'<p>'+esc(p)+'</p>').join('')
       +'<blockquote>'+esc(P.about.quote.text)+'</blockquote>'
-      +'<h2>## Chronologie</h2>'
+      +'<h2>## '+L('Chronologie','Timeline')+'</h2>'
       +'<ul class="cm-chrono">'+chrono+'</ul></div>');
 
     /* src/projects/<file> */
@@ -100,18 +100,18 @@
       let lines=[
         c('/*  '+p.nom+'  '+bar),
         c(' *  stack     : '+p.stackLine),
-        c(' *  rôle      : '+p.course),
+        c(' *  '+L('rôle','role')+'      : '+p.course),
         c(' *  live      : '+p.url),
         c(' */'),
         ''
       ];
-      lines.push(kw('résumé')+' :');
+      lines.push(kw(L('résumé','summary'))+' :');
       wrap(p.description,64,'  ').forEach(l=>lines.push('  '+s_(l.slice(2))));
       lines.push('');
-      lines.push(kw('démontre')+' :');
+      lines.push(kw(L('démontre','demonstrates'))+' :');
       wrap(C.demontre[p.id],64,'  ').forEach(l=>lines.push('  '+s_(l.slice(2))));
       lines.push('');
-      lines.push(kw('note_du_chef')+' :');
+      lines.push(kw(L('note_du_chef','chefs_note'))+' :');
       wrap(p.note,64,'  ').forEach(l=>lines.push('  '+c(l.slice(2))));
       addFile({id:'proj-'+p.id,name:fn,path:'src/projects/',lang:LANG[extOf(fn)]||'code',icon:extOf(fn)},codeBlock(lines));
     });
@@ -133,21 +133,21 @@
 
     const shell=`<div class="cm">
       <button class="cm-scrim" id="cm-scrim" aria-hidden="true" tabindex="-1"></button>
-      <aside class="cm-side" id="cm-side" aria-label="Explorateur de fichiers">
+      <aside class="cm-side" id="cm-side" aria-label="${L('Explorateur de fichiers','File explorer')}">
         <div class="cm-side-h"><span>Explorer</span><span class="cm-repo-name">noa-vellat</span></div>
         <div class="cm-tree" role="tree">${tree}</div>
       </aside>
       <div class="cm-main">
         <div class="cm-tabbar">
-          <button class="cm-ham" id="cm-ham" aria-label="Ouvrir l'explorateur" aria-expanded="false"><span></span><span></span><span></span></button>
-          <div class="cm-tabs" role="tablist" aria-label="Onglets ouverts"></div>
+          <button class="cm-ham" id="cm-ham" aria-label="${L("Ouvrir l'explorateur",'Open the explorer')}" aria-expanded="false"><span></span><span></span><span></span></button>
+          <div class="cm-tabs" role="tablist" aria-label="${L('Onglets ouverts','Open tabs')}"></div>
         </div>
         <div class="cm-editorwrap">
           <div class="cm-editor" id="cm-editor">${panels.join('')}</div>
           <div class="cm-minimap" id="cm-minimap" aria-hidden="true"></div>
         </div>
         <div class="cm-status">
-          <span class="cm-st-branch">⎇ alternance/sept-2026</span>
+          <span class="cm-st-branch">⎇ ${L('alternance','apprenticeship')}/sept-2026</span>
           <span class="cm-st-proj">src · ${C.projets.length} projects</span>
           <span class="cm-st-spacer"></span>
           <span class="cm-st-ln" id="cm-ln">Ln 1, Col 1</span>
@@ -162,8 +162,8 @@
   function initCompileRepo(){
     setNavLinks([
       {href:'#',file:'README',label:'readme'},
-      {href:'#',file:'proj-'+CONTENT.projets[0].id,label:'projets'},
-      {href:'#',file:'parcours',label:'parcours'},
+      {href:'#',file:'proj-'+CONTENT.projets[0].id,label:L('projets','projects')},
+      {href:'#',file:'parcours',label:L('parcours','journey')},
       {href:'#',file:'contrib',label:'contact'}
     ]);
     const side=main.querySelector('#cm-side');
@@ -179,7 +179,7 @@
     function renderTabs(){
       tabsEl.innerHTML=open.map(id=>{
         const m=meta[id]; const on=id===active;
-        return '<div class="cm-tab'+(on?' on':'')+'" role="tab" tabindex="'+(on?'0':'-1')+'" aria-selected="'+(on?'true':'false')+'" data-id="'+id+'"><span class="cm-fi cm-fi-'+(m.name.split('.').pop())+'" aria-hidden="true"></span><span class="cm-tab-name">'+m.name+'</span><span class="cm-tab-x" role="button" aria-label="Fermer" data-close="'+id+'">✕</span></div>';
+        return '<div class="cm-tab'+(on?' on':'')+'" role="tab" tabindex="'+(on?'0':'-1')+'" aria-selected="'+(on?'true':'false')+'" data-id="'+id+'"><span class="cm-fi cm-fi-'+(m.name.split('.').pop())+'" aria-hidden="true"></span><span class="cm-tab-name">'+m.name+'</span><span class="cm-tab-x" role="button" aria-label="'+L('Fermer','Close')+'" data-close="'+id+'">✕</span></div>';
       }).join('');
     }
     function setActive(id){

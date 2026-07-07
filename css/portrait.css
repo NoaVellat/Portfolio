@@ -21,3 +21,6 @@ html[data-da="atelier"] .photo-wrap{max-width:200px;animation:none;}
 html[data-da="atelier"] .photo-wrap::before{content:'';position:absolute;inset:-9px;border:1px solid rgba(var(--blue-rgb),.45);pointer-events:none;}
 html[data-da="atelier"] .photo-wrap::after{content:'Fig. 00 — L’auteur';position:absolute;left:0;right:0;bottom:-1.9rem;text-align:center;font-family:var(--display);font-style:italic;font-size:.78rem;color:var(--muted);}
 
+
+/* i18n — version anglaise du texte généré en CSS */
+html[lang="en"][data-da="atelier"] .photo-wrap::after{content:'Fig. 00 — The author';}

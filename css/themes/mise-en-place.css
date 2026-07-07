@@ -139,3 +139,7 @@ html[data-da="mise-en-place"] .hero-right{display:flex;justify-content:center;ma
 html[data-da="mise-en-place"] .photo-wrap{max-width:230px;}
 html[data-da="mise-en-place"] .hero-desc{margin-left:auto;margin-right:auto;max-width:460px;}
 
+
+/* i18n — version anglaise des textes générés en CSS */
+html[lang="en"][data-da="mise-en-place"] .proj-tech-chips::before{content:'Ingredients —';}
+html[lang="en"][data-da="mise-en-place"] #projects .section-tag::after{content:'  ·  tasting menu, six services';}

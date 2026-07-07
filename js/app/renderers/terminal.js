@@ -16,17 +16,17 @@
         <span class="hero-caret"></span>
       </div>
       <h1 class="hero-name" id="heroName">${mlSplit(id.prenom)}<br/><span class="green">${mlSplit(id.nom)}</span></h1>
-      <p class="hero-role">// <span class="hl">Développeur Web</span> — Alternance 2025→2027</p>
+      <p class="hero-role">// <span class="hl">${L('Développeur Web','Web Developer')}</span> — ${L('Alternance','Apprenticeship')} 2025→2027</p>
       <p class="hero-desc">${esc(id.pitch)}</p>
       <div class="hero-btns">
-        <a href="#projects" class="btn-primary">./voir-projets</a>
+        <a href="#projects" class="btn-primary">${L('./voir-projets','./view-projects')}</a>
         <a href="#contact" class="btn-outline">./contact</a>
       </div>
       <div class="hero-status">${heroStatus}</div>
       <div class="hero-themes">
-        <p class="ht-head"><span class="inv-star" aria-hidden="true">✦</span> <b>Un site, cinq ambiances</b> — chacune une parcelle de ma vie. Cliquez, tout change :</p>
-        <div class="ht-pills">${THEME_TEASER.map(t=>`<button type="button" class="ht-pill" data-set-da="${t.da}" title="Basculer vers l’ambiance ${esc(t.name)}"><span class="sw sw-${t.sw}" aria-hidden="true"></span><span class="ht-txt"><span class="ht-name">${esc(t.name)}</span><span class="ht-tag">${esc(t.tag)}</span></span></button>`).join('')}</div>
-        <p class="ht-path">(ou à tout moment via le bouton « Ambiance », en haut à droite)</p>
+        <p class="ht-head"><span class="inv-star" aria-hidden="true">✦</span> <b>${L('Un site, cinq ambiances','One site, five moods')}</b> — ${L('chacune une parcelle de ma vie. Cliquez, tout change :','each one a piece of my life. Click, and everything changes:')}</p>
+        <div class="ht-pills">${THEME_TEASER.map(t=>`<button type="button" class="ht-pill" data-set-da="${t.da}" title="${L('Basculer vers l’ambiance','Switch to the mood')} ${esc(t.name)}"><span class="sw sw-${t.sw}" aria-hidden="true"></span><span class="ht-txt"><span class="ht-name">${esc(t.name)}</span><span class="ht-tag">${esc(t.tag)}</span></span></button>`).join('')}</div>
+        <p class="ht-path">${L('(ou à tout moment via le bouton « Ambiance », en haut à droite)','(or anytime via the “Ambiance” button, top right)')}</p>
       </div>
     </div>
     <div class="hero-right">
@@ -34,7 +34,7 @@
         <img class="photo-img" src="" alt="Noa Vellat"/>
         <div class="photo-ring"></div>
         <div class="photo-badge">
-          <span class="badge-l">Basé à</span>
+          <span class="badge-l">${L('Basé à','Based in')}</span>
           <span class="badge-v">${esc(id.ville)}</span>
         </div>
       </div>
@@ -59,7 +59,7 @@
   <div class="about-inner">
     <div class="about-text">
       <div class="section-tag">about_me</div>
-      <h2 class="section-title">De la cuisine<br/>au <span class="accent">code</span></h2>
+      <h2 class="section-title">${L('De la cuisine','From the kitchen')}<br/>${L('au','to')} <span class="accent">code</span></h2>
       ${aboutParas}
       <div class="about-quote">
         <p>"${esc(P.about.quote.text)}"</p>
@@ -90,7 +90,7 @@
     const skills=`<section id="skills">
   <div class="skills-inner">
     <div class="section-tag">skills.json</div>
-    <h2 class="section-title">Stack <span class="accent">technique</span></h2>
+    <h2 class="section-title">${L('Stack','Tech')} <span class="accent">${L('technique','stack')}</span></h2>
     <div class="skill-tabs" id="skillTabs">
       ${tabsHTML}
     </div>
@@ -159,7 +159,7 @@
     const projects=`<section id="projects">
   <div class="projects-inner">
     <div class="section-tag">projects/</div>
-    <h2 class="section-title">Mes <span class="accent">réalisations</span></h2>
+    <h2 class="section-title">${L('Mes','My')} <span class="accent">${L('réalisations','work')}</span></h2>
     <div class="proj-grid-clean">
 
       ${projCards}
@@ -185,7 +185,7 @@
   <div class="story-inner">
     <div class="story-text">
       <div class="section-tag">history.log</div>
-      <h2 class="section-title">L'exigence,<br/><span class="accent">ma signature</span></h2>
+      <h2 class="section-title">${L("L'exigence,",'High standards,')}<br/><span class="accent">${L('ma signature','my signature')}</span></h2>
       ${storyParas}
       <div class="story-quote">
         <blockquote>"${esc(P.story.quote.text)}"</blockquote>
@@ -197,7 +197,7 @@
       </div>
     </div>
     <div>
-      <div class="section-tag" style="margin-bottom:1.75rem">parcours</div>
+      <div class="section-tag" style="margin-bottom:1.75rem">${L('parcours','journey')}</div>
       ${longTl}
     </div>
   </div>
@@ -211,7 +211,7 @@
     <p>${esc(CONTENT.contact.pitch)}</p>
     <div class="contact-grid">
       <a href="mailto:${CT.email}" class="cc"><i class="fas fa-envelope"></i><strong>Email</strong><span>${esc(CT.email)}</span></a>
-      <a href="tel:${CT.telHref}" class="cc"><i class="fas fa-phone"></i><strong>Téléphone</strong><span>${esc(CT.tel)}</span></a>
+      <a href="tel:${CT.telHref}" class="cc"><i class="fas fa-phone"></i><strong>${L('Téléphone','Phone')}</strong><span>${esc(CT.tel)}</span></a>
       <a href="${CT.linkedin.url}" target="_blank" class="cc"><i class="fab fa-linkedin"></i><strong>LinkedIn</strong><span>${esc(CT.linkedin.handle)}</span></a>
       <a href="${CT.github.url}" target="_blank" class="cc"><i class="fab fa-github"></i><strong>GitHub</strong><span>${esc(CT.github.handle)}</span></a>
     </div>
