@@ -36,7 +36,7 @@ html[data-da="mise-en-place"]{
   --green:#FF5A1F; --green2:#B87333; --blue:#C98B4B; --amber:#8C9A78;
   --text:#EDE6DA; --muted:#96826C; --muted2:#4A3D30;
   --grid-rgb:184,115,51; --grid-a:.022; --text-rgb:237,230,218;
-  --mono:'JetBrains Mono',monospace; --display:'Fraunces',serif;
+  --mono:'JetBrains Mono',monospace; --display:'Playfair Display',serif;
 }
 html[data-da="fluid"]{
   --green-rgb:232,64,155; --blue-rgb:31,209,196; --amber-rgb:183,156,255;
@@ -49,13 +49,13 @@ html[data-da="fluid"]{
 }
 /* Atelier — thème CLAIR, papier & encre (l'opposé total des 4 fonds sombres) */
 html[data-da="atelier"]{
-  --green-rgb:198,93,59; --blue-rgb:74,90,110; --amber-rgb:150,120,70;
-  --bg-rgb:244,239,230; --bg2-rgb:236,229,217; --bg3-rgb:228,219,205;
-  --bg:#F4EFE6; --bg2:#ECE5D9; --bg3:#E4DBCD;
-  --green:#C65D3B; --green2:#9A6A4A; --blue:#4A5A6E; --amber:#8A6B3E;
+  --green-rgb:193,58,40; --blue-rgb:74,90,110; --amber-rgb:150,120,70;
+  --bg-rgb:243,241,234; --bg2-rgb:235,231,220; --bg3-rgb:225,220,204;
+  --bg:#F3F1EA; --bg2:#EBE7DC; --bg3:#E1DCCC;
+  --green:#C13A28; --green2:#9A6A4A; --blue:#4A5A6E; --amber:#8A6B3E;
   --text:#211C17; --muted:#6E6455; --muted2:#B4A892;
   --grid-rgb:120,105,80; --grid-a:.05; --text-rgb:33,28,23;
-  --mono:'JetBrains Mono',monospace; --display:'Fraunces',serif;
+  --mono:'JetBrains Mono',monospace; --display:'Playfair Display',serif;
 }
 html{scroll-behavior:smooth;background:var(--bg);transition:background .7s var(--ease);}
 body{color:var(--text);font-family:var(--sans);overflow-x:hidden;background:transparent;

@@ -45,7 +45,7 @@
 .sw-compile{background:linear-gradient(135deg,#081428 0%,#78AAE1 45%,#4DE1C1 100%);}
 .sw-mise{background:linear-gradient(135deg,#16110E 0%,#B87333 55%,#FF5A1F 100%);}
 .sw-fluid{background:linear-gradient(135deg,#120a24 0%,#1FD1C4 45%,#E8409B 100%);}
-.sw-atelier{background:linear-gradient(135deg,#F4EFE6 0%,#C65D3B 60%,#4A5A6E 100%);}
+.sw-atelier{background:linear-gradient(135deg,#F3F1EA 0%,#C13A28 60%,#4A5A6E 100%);}
 
 /* ════════ ACCROCHE « on peut changer de fond » ════════ */
 .da-hint{position:absolute;top:calc(100% + .7rem);right:0;white-space:nowrap;

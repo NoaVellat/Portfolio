@@ -209,7 +209,10 @@
     const compP=prog(COMP,['u_scene','u_res','u_time','u_bloom']);if(!compP)return null;
     return {gl,quad,daP,inkP,compP};
   }
-  const R=makeGL();
+  /* Trois.js d'abord : scènes 3D par DA (scenes3d.js). Sinon, shaders 2D historiques. */
+  const T3=(window.DA3D&&window.DA3D.init)?window.DA3D.init(glCanvas,isMobile):null;
+  const R=T3?null:makeGL();
+  if(T3)GLDA.terminal=1;   /* en 3D, même Terminal a sa scène (pluie de glyphes en profondeur) */
   const POST=!!R&&!isMobile;
 
   /* ---------- État partagé ---------- */
@@ -261,13 +264,15 @@
   /* ---------- WebGL sizing & rendu ---------- */
   function sizeGL(){const dpr=Math.min(window.devicePixelRatio||1,isMobile?1.0:1.6);
     GW=Math.max(1,Math.round(innerWidth*dpr));GH=Math.max(1,Math.round(innerHeight*dpr));
+    if(T3){T3.resize(innerWidth,innerHeight,dpr);return;}
     glCanvas.width=GW;glCanvas.height=GH;glCanvas.style.width=innerWidth+'px';glCanvas.style.height=innerHeight+'px';
     if(R)allocFBOs();}
   function bindQuad(P){const gl=R.gl;gl.bindBuffer(gl.ARRAY_BUFFER,R.quad);gl.enableVertexAttribArray(P.loc);gl.vertexAttribPointer(P.loc,2,gl.FLOAT,false,0,0);}
   function renderGL(now){
+    let ph=0;if(ripStart>0){ph=(now-ripStart)/1400;if(ph>=1){ph=0;ripStart=-1;}}
+    if(T3){T3.render(now,{da:cur,mx,my,rx,ry,ph,burst});pmx=mx;pmy=my;burst*=0.90;return;}
     if(!R)return;const gl=R.gl;const P=R.daP[cur];if(!P)return;
     const time=(now-t0)*0.001;
-    let ph=0;if(ripStart>0){ph=(now-ripStart)/1400;if(ph>=1){ph=0;ripStart=-1;}}
     if(POST){
       const mvx=mx-pmx,mvy=my-pmy;
       gl.bindFramebuffer(gl.FRAMEBUFFER,inkDst.f);gl.viewport(0,0,inkDst.w,inkDst.h);
@@ -339,7 +344,7 @@
       cur=name;root.setAttribute('data-da',cur);paintUI(cur);if(window.NOA)window.NOA.renderAtSwitch(cur);
       try{localStorage.setItem('noa-da',cur);}catch(e){}
       mode=GLDA[cur]?'gl':'2d';
-      if(mode==='gl'){c2d.classList.add('hide');glCanvas.classList.remove('hide');glCanvas.classList.toggle('fallback',!R);}
+      if(mode==='gl'){c2d.classList.add('hide');glCanvas.classList.remove('hide');glCanvas.classList.toggle('fallback',!(R||T3));}
       else{glCanvas.classList.add('hide');c2d.classList.remove('hide');}
       void document.body.offsetWidth;                       /* snap aux nouveaux tokens */
       requestAnimationFrame(()=>root.classList.remove('da-instant'));
@@ -375,7 +380,7 @@
 
   /* ---------- Boot ---------- */
   sizeGL();size2d();
-  if(mode==='gl'){c2d.classList.add('hide');glCanvas.classList.remove('hide');glCanvas.classList.toggle('fallback',!R);}
+  if(mode==='gl'){c2d.classList.add('hide');glCanvas.classList.remove('hide');glCanvas.classList.toggle('fallback',!(R||T3));}
   else{glCanvas.classList.add('hide');c2d.classList.remove('hide');}
   paintUI(cur);
   start();
