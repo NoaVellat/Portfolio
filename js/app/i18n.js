@@ -9,7 +9,7 @@
   (function(){
     if(window.__LANG!=='en')return;
     const set=(sel,txt)=>{const el=document.querySelector(sel);if(el)el.textContent=txt;};
-    set('#daHint','✦ Change the site’s mood');
+    set('#daHint','◆ Change the site’s mood');
     set('.da-menu-h','Art direction');
     set('.da-opt[data-da="terminal"] .da-opt-desc','the original · matrix · green');
     set('.da-opt[data-da="mise-en-place"] .da-opt-desc','craft · embers · copper');

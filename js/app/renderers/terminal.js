@@ -24,7 +24,7 @@
       </div>
       <div class="hero-status">${heroStatus}</div>
       <div class="hero-themes">
-        <p class="ht-head"><span class="inv-star" aria-hidden="true">✦</span> <b>${L('Un site, cinq ambiances','One site, five moods')}</b> — ${L('chacune une parcelle de ma vie. Cliquez, tout change :','each one a piece of my life. Click, and everything changes:')}</p>
+        <p class="ht-head"><span class="inv-star" aria-hidden="true">◆</span> <b>${L('Un site, cinq ambiances','One site, five moods')}</b> — ${L('chacune une parcelle de ma vie. Cliquez, tout change :','each one a piece of my life. Click, and everything changes:')}</p>
         <div class="ht-pills">${THEME_TEASER.map(t=>`<button type="button" class="ht-pill" data-set-da="${t.da}" title="${L('Basculer vers l’ambiance','Switch to the mood')} ${esc(t.name)}"><span class="sw sw-${t.sw}" aria-hidden="true"></span><span class="ht-txt"><span class="ht-name">${esc(t.name)}</span><span class="ht-tag">${esc(t.tag)}</span></span></button>`).join('')}</div>
         <p class="ht-path">${L('(ou à tout moment via le bouton « Ambiance », en haut à droite)','(or anytime via the “Ambiance” button, top right)')}</p>
       </div>

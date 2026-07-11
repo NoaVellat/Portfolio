@@ -81,7 +81,7 @@ html[data-da="mise-en-place"] h1.hero-name .green{font-style:italic;font-weight:
 /* Préfixe des liens de nav propre à chaque ambiance */
 html[data-da="compile"] .nav-links a::before{content:'~/';}
 html[data-da="mise-en-place"] .nav-links a::before{content:'▸ ';}
-html[data-da="fluid"] .nav-links a::before{content:'✦ ';}
+html[data-da="fluid"] .nav-links a::before{content:'~ ';}
 html[data-da="atelier"] .nav-links a::before{content:'✎ ';}
 /* Atelier (fond clair) : le curseur perso doit s'assombrir, pas s'éclaircir */
 html[data-da="atelier"] #da-cursor{mix-blend-mode:multiply;box-shadow:0 0 18px rgba(var(--green-rgb),.35);}

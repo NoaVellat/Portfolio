@@ -35,7 +35,7 @@
       +'<ul><li>'+L('Reconversion : cuisine gastronomique lyonnaise → développement web.','Career change: Lyon fine-dining kitchens → web development.')+'</li>'
       +'<li>'+esc(id.ecole)+' · Web Académie · 2025–2027 '+L('(alternance).','(apprenticeship).')+'</li>'
       +'<li>'+esc(id.dispo.long)+'.</li>'
-      +'<li class="da-invite"><span class="inv-star" aria-hidden="true">✦</span> '+esc(V.invite)+' <span class="inv-path">('+esc(V.invitePath)+')</span></li></ul>'
+      +'<li class="da-invite"><span class="inv-star" aria-hidden="true">◆</span> '+esc(V.invite)+' <span class="inv-path">('+esc(V.invitePath)+')</span></li></ul>'
       +'<h2>## '+L('Explorer ce dépôt','Explore this repo')+'</h2>'
       +'<ul class="cm-md-files">'
       +'<li><button class="cm-openlink" data-open="proj-'+C.projets[0].id+'">src/projects/</button> — '+C.projets.length+L(' réalisations, un fichier chacune.',' projects, one file each.')+'</li>'

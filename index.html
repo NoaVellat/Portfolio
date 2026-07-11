@@ -6,23 +6,23 @@
 <title>Noa Vellat — Dev</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600&family=Syne:wght@400;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Archivo:wght@300;400;500;600&family=Syne:wght@400;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
 <script>/* anti-FOUC : applique la DA avant le paint (?da= dans l'URL > localStorage) */(function(){var ok={terminal:1,'mise-en-place':1,compile:1,fluid:1,atelier:1};var v='terminal';try{var d=localStorage.getItem('noa-da');if(ok[d])v=d;}catch(e){}var m=(location.search.match(/[?&]da=([a-z-]+)/)||[])[1];if(ok[m])v=m;document.documentElement.setAttribute('data-da',v);})();
 /* anti-FOUC langue : applique fr/en avant le paint (les textes CSS en dépendent) */(function(){var ok={fr:1,en:1};var v='fr';try{var s=localStorage.getItem('noa-lang');if(ok[s])v=s;}catch(e){}window.__LANG=v;document.documentElement.lang=v;})();</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
-<link rel="stylesheet" href="css/base.css"/>
-<link rel="stylesheet" href="css/da-switcher.css"/>
-<link rel="stylesheet" href="css/themes/mise-en-place.css"/>
-<link rel="stylesheet" href="css/themes/compile.css"/>
-<link rel="stylesheet" href="css/themes/fluid.css"/>
-<link rel="stylesheet" href="css/themes/atelier.css"/>
-<link rel="stylesheet" href="css/portrait.css"/>
-<link rel="stylesheet" href="css/responsive.css"/>
-<link rel="stylesheet" href="css/themes/atelier-revue.css"/>
-<link rel="stylesheet" href="css/themes/fluid-galerie.css"/>
-<link rel="stylesheet" href="css/themes/mise-en-place-menu.css"/>
-<link rel="stylesheet" href="css/themes/compile-repo.css"/>
+<link rel="stylesheet" href="css/base.css?v=711"/>
+<link rel="stylesheet" href="css/da-switcher.css?v=711"/>
+<link rel="stylesheet" href="css/themes/mise-en-place.css?v=711"/>
+<link rel="stylesheet" href="css/themes/compile.css?v=711"/>
+<link rel="stylesheet" href="css/themes/fluid.css?v=711"/>
+<link rel="stylesheet" href="css/themes/atelier.css?v=711"/>
+<link rel="stylesheet" href="css/portrait.css?v=711"/>
+<link rel="stylesheet" href="css/responsive.css?v=711"/>
+<link rel="stylesheet" href="css/themes/atelier-revue.css?v=711"/>
+<link rel="stylesheet" href="css/themes/fluid-galerie.css?v=711"/>
+<link rel="stylesheet" href="css/themes/mise-en-place-menu.css?v=711"/>
+<link rel="stylesheet" href="css/themes/compile-repo.css?v=711"/>
 </head>
 <body>
 
@@ -46,7 +46,7 @@
   </ul>
   <div class="nav-right" style="display:flex;align-items:center;gap:1rem;">
     <div class="da-wrap" id="daWrap">
-      <div class="da-hint" id="daHint" aria-hidden="true">✦ Change l'ambiance du site</div>
+      <div class="da-hint" id="daHint" aria-hidden="true">◆ Change l'ambiance du site</div>
       <button class="da-toggle" id="daToggle" aria-haspopup="true" aria-expanded="false" aria-label="Changer l'ambiance visuelle du site">
         <span class="da-orb" aria-hidden="true"></span>
         <span class="da-name">Ambiance · <b id="daCurrent">Terminal</b></span>
@@ -105,20 +105,20 @@
 
 
 <!-- Moteur de fonds : three.js (scènes 3D par DA) + orchestrateur / fallback shaders -->
-<script src="js/vendor/three.min.js"></script>
-<script src="js/background/scenes3d.js"></script>
-<script src="js/background/engine.js"></script>
+<script src="js/vendor/three.min.js?v=711"></script>
+<script src="js/background/scenes3d.js?v=711"></script>
+<script src="js/background/engine.js?v=711"></script>
 
 <!-- Application « 1 contenu, 5 récits » (scripts classiques : l'ordre compte) -->
-<script src="js/app/i18n.js"></script>
-<script src="js/app/core.js"></script>
-<script src="js/app/content.js"></script>
-<script src="js/app/renderers/terminal.js"></script>
-<script src="js/app/renderers/atelier.js"></script>
-<script src="js/app/renderers/fluid.js"></script>
-<script src="js/app/renderers/compile.js"></script>
-<script src="js/app/renderers/mise-en-place.js"></script>
-<script src="js/app/enhancers.js"></script>
-<script src="js/app/main.js"></script>
+<script src="js/app/i18n.js?v=711"></script>
+<script src="js/app/core.js?v=711"></script>
+<script src="js/app/content.js?v=711"></script>
+<script src="js/app/renderers/terminal.js?v=711"></script>
+<script src="js/app/renderers/atelier.js?v=711"></script>
+<script src="js/app/renderers/fluid.js?v=711"></script>
+<script src="js/app/renderers/compile.js?v=711"></script>
+<script src="js/app/renderers/mise-en-place.js?v=711"></script>
+<script src="js/app/enhancers.js?v=711"></script>
+<script src="js/app/main.js?v=711"></script>
 </body>
 </html>

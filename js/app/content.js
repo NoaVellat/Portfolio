@@ -259,7 +259,7 @@
       invite:L('Ce numéro paraît en cinq éditions — une par facette de l’auteur.','This issue comes in five editions — one per facet of the author.'), invitePath:L('sélecteur « Ambiance », en haut à droite','“Ambiance” selector, top right') }
   };
   /* petite ligne d'invitation à changer d'ambiance, déclinée par récit */
-  const inviteHTML=(V,cls)=>`<p class="${cls} da-invite"><span class="inv-star" aria-hidden="true">✦</span> ${esc(V.invite)} <span class="inv-path">(${esc(V.invitePath)})</span></p>`;
+  const inviteHTML=(V,cls)=>`<p class="${cls} da-invite"><span class="inv-star" aria-hidden="true">◆</span> ${esc(V.invite)} <span class="inv-path">(${esc(V.invitePath)})</span></p>`;
   /* teaser des 4 autres ambiances — chacune une parcelle de la vie de Noa (affiché sur le thème d'accueil) */
   const THEME_TEASER=[
     {da:'mise-en-place', sw:'mise',    name:'Mise en Place', tag:L('mes années de brigade','my brigade years')},

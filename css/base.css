@@ -1,6 +1,6 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --sans:'Inter',sans-serif;
+  --sans:'Archivo',sans-serif;
   --ease:cubic-bezier(.16,1,.3,1);
   /* tokens dérivés — se recalculent tout seuls selon la DA active */
   --green-dim:rgba(var(--green-rgb),.1);

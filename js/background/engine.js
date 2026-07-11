@@ -213,6 +213,7 @@
   const T3=(window.DA3D&&window.DA3D.init)?window.DA3D.init(glCanvas,isMobile):null;
   const R=T3?null:makeGL();
   if(T3)GLDA.terminal=1;   /* en 3D, même Terminal a sa scène (pluie de glyphes en profondeur) */
+  console.info(T3?'[DA] fonds 3D three.js actifs (v7.1)':'[DA] three.js indisponible → fallback shaders 2D');
   const POST=!!R&&!isMobile;
 
   /* ---------- État partagé ---------- */
